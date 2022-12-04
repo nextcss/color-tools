@@ -2,6 +2,18 @@
 
 Useful tools when working with colors.
 
+## Installation
+
+Install the package via yarn or npm.
+
+```bash
+yarn add -D @nextcss/color-tools
+```
+
+```bash
+npm i -D @nextcss/color-tools
+```
+
 ## Convert Hex color to RGB color
 
 Converts any hexadecimal color (3 or 6 digits) to rgba color array.
