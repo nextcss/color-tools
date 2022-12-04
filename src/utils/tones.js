@@ -8,7 +8,9 @@ export const tones = (hex) => {
 
   [...light, 0, ...dark].forEach((tone, key) => {
     const toneKey = key * 50 + 50;
-    results[toneKey] = colorShift(hex, tone);
+    const color = colorShift(hex, tone);
+
+    if (color) results[toneKey] = color;
   });
 
   return results;
