@@ -1,7 +1,18 @@
 {
   "name": "@nextcss/color-tools",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "description": "Color tools for browser and node.",
+  "keywords": [
+    "color",
+    "colors",
+    "color-tool",
+    "color-palette",
+    "js",
+    "javascript",
+    "es6",
+    "node",
+    "nodejs"
+  ],
   "license": "MIT",
   "type": "module",
   "main": "./dist/index.js",
