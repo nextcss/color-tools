@@ -20,9 +20,9 @@ yarn add -D @nextcss/color-tools
 npm i -D @nextcss/color-tools
 ```
 
-## Convert Hex color to RGB color
+## HEX to RGB
 
-Converts any hexadecimal color (3 or 6 digits) to rgb color array.
+Convert hexadecimal color (3 or 6 digits) to rgb color array.
 
 ```js
 import { hex2rgb } from '@nextcss/color-tools';
@@ -40,9 +40,21 @@ console.log({ red, green, blue });
 // Output -> { red: 33, green: 150, blue: 243 }
 ```
 
-## Color shift
+## RGB to HEX
 
-Shifts a hexadecimal color (3 or 6 digits) by the specified percentage.
+Convert rgb color array to hexadecimal color.
+
+```js
+import { rgb2hex } from '@nextcss/color-tools';
+
+const hex = rgb2hex([238, 238, 238]);
+console.log(hex);
+// Output -> '#eeeeee'
+```
+
+## Color Shift
+
+Shift a hexadecimal color (3 or 6 digits) by the specified percentage.
 
 ```js
 import { colorShift } from '@nextcss/color-tools';
@@ -56,9 +68,9 @@ console.log(color2);
 // Output -> #f0f0f0
 ```
 
-## Tone map generator
+## Tone Map
 
-Generates a tone map from a hexadecimal color (3 or 6 digits), between 50 and 950 tones.
+Generate a tone map from a hexadecimal color (3 or 6 digits), between 50 and 950 tones.
 
 ```js
 import { toneMap } from '@nextcss/color-tools';

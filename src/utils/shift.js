@@ -1,4 +1,5 @@
 import { hex2rgb } from './hex2rgb.js';
+import { rgb2hex } from './rgb2hex.js';
 
 const roundMinMax = (value) => Math.min(255, Math.max(0, Math.round(value)));
 
@@ -13,7 +14,5 @@ export const colorShift = (hex, percentage = 0) => {
         : roundMinMax(val - val * multiplier);
   });
 
-  const result = rgb?.map((val) => val.toString(16).padStart(2, '0')).join('');
-
-  return result ? '#' + result : undefined;
+  return rgb2hex(rgb);
 };
