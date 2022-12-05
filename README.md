@@ -2,6 +2,7 @@
 [![npm](https://img.shields.io/npm/v/@nextcss/color-tools?style=flat-square)](https://www.npmjs.com/package/@nextcss/color-tools)
 [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/nextcss/color-tools/Test%20build)](https://github.com/nextcss/color-tools/actions/workflows/node.js.yml)
 [![Codecov](https://img.shields.io/codecov/c/github/nextcss/color-tools?style=flat-square)](https://app.codecov.io/github/nextcss/color-tools)
+[![Sponsor](https://img.shields.io/static/v1?label=sponsor&message=❤&color=ff69b4)](https://github.com/sponsors/toviszsolt)
 
 # Color Tools
 
@@ -21,12 +22,10 @@ npm i -D @nextcss/color-tools
 
 ## Convert Hex color to RGB color
 
-Converts any hexadecimal color (3 or 6 digits) to rgba color array.
+Converts any hexadecimal color (3 or 6 digits) to rgb color array.
 
 ```js
-import tools from '@nextcss/color-tools';
-
-const { hex2rgb } = tools;
+import { hex2rgb } from '@nextcss/color-tools';
 
 const rgb = hex2rgb('#2196f3');
 console.log(rgb);
@@ -46,9 +45,7 @@ console.log({ red, green, blue });
 Shifts a hexadecimal color (3 or 6 digits) by the specified percentage.
 
 ```js
-import tools from '@nextcss/color-tools';
-
-const { colorShift } = tools;
+import { colorShift } from '@nextcss/color-tools';
 
 const color = colorShift('#eee', 10);
 console.log(color);
@@ -64,48 +61,43 @@ console.log(color2);
 Generates a tone map from a hexadecimal color (3 or 6 digits), between 50 and 950 tones.
 
 ```js
-import tools from '@nextcss/color-tools';
+import { toneMap } from '@nextcss/color-tools';
 
-const { tones } = tools;
-
-const toneMap = tones('#eee');
+const toneMap = toneMap('#eee');
 console.log(toneMap);
 
 // Output -> {
-//  '50': '#e9f5fe',
-//  '100': '#deeffd',
-//  '150': '#c5e4fc',
-//  '200': '#abd7fa',
-//  '250': '#90cbf9',
-//  '300': '#7ac0f8',
-//  '350': '#64b6f7',
-//  '400': '#4dabf5',
-//  '450': '#37a1f4',
-//  '500': '#2196f3',
-//  '550': '#1e87db',
-//  '600': '#1a78c2',
-//  '650': '#1769aa',
-//  '700': '#145a92',
-//  '750': '#114b7a',
-//  '800': '#0d3c61',
-//  '850': '#0a2d49',
-//  '900': '#071e31',
-//  '950': '#051724'
+//   50: '#fdfdfd',
+//   100: '#fcfcfc',
+//   150: '#fbfbfb',
+//   200: '#f9f9f9',
+//   250: '#f7f7f7',
+//   300: '#f5f5f5',
+//   350: '#f3f3f3',
+//   400: '#f1f1f1',
+//   450: '#f0f0f0',
+//   500: '#eeeeee',
+//   550: '#d6d6d6',
+//   600: '#bebebe',
+//   650: '#a7a7a7',
+//   700: '#8f8f8f',
+//   750: '#777777',
+//   800: '#5f5f5f',
+//   850: '#474747',
+//   900: '#303030',
+//   950: '#242424',
 // }
 ```
 
 ## TypeScript
 
-For more information, see the Typescript page.
+Since we don't use TypeScript, any issue with TypeScript is your business. For more information, see
+the Typescript documentation. If you're having problems with TypeScript, here are some hints that
+might get you started:
 
-```js
-// tsconfig.json
-{
-  "compilerOptions": {
-    "allowJs": true
-  }
-}
-```
+- `esModuleInterop` option in `compilerOptions`
+- `allowJs` option in `compilerOptions`
+- `declare module "*"` in `declarations.d.ts`
 
 ## Contribution
 
