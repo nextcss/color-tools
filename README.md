@@ -1,6 +1,7 @@
+[![GitHub License](https://img.shields.io/github/license/nextcss/color-tools?style=flat-square)](https://github.com/nextcss/color-tools/blob/main/LICENSE)
 [![npm](https://img.shields.io/npm/v/@nextcss/color-tools?style=flat-square)](https://www.npmjs.com/package/@nextcss/color-tools)
 [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/nextcss/color-tools/Test%20build)](https://github.com/nextcss/color-tools/actions/workflows/node.js.yml)
-[![GitHub License](https://img.shields.io/github/license/nextcss/color-tools?style=flat-square)](https://github.com/nextcss/color-tools/blob/main/LICENSE)
+[![Codecov](https://img.shields.io/codecov/c/github/nextcss/color-tools?style=flat-square)](https://app.codecov.io/github/nextcss/color-tools)
 
 # Color Tools
 
