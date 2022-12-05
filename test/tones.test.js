@@ -1,8 +1,7 @@
-import tools from '../src/index.js';
-
-const { tones } = tools;
+import { toneMap } from '../src/index.js';
 
 const testResult = {
+  50: '#fdfdfd',
   100: '#fcfcfc',
   150: '#fbfbfb',
   200: '#f9f9f9',
@@ -11,7 +10,6 @@ const testResult = {
   350: '#f3f3f3',
   400: '#f1f1f1',
   450: '#f0f0f0',
-  50: '#fdfdfd',
   500: '#eeeeee',
   550: '#d6d6d6',
   600: '#bebebe',
@@ -26,26 +24,26 @@ const testResult = {
 
 describe('Tones', () => {
   test.concurrent('3 digits with hash', async () => {
-    expect(tones('#eee')).toEqual(testResult);
+    expect(toneMap('#eee')).toEqual(testResult);
   });
 
   test.concurrent('3 digits without hash', async () => {
-    expect(tones('eee')).toEqual(testResult);
+    expect(toneMap('eee')).toEqual(testResult);
   });
 
   test.concurrent('6 digits with hash', async () => {
-    expect(tones('#eeeeee', 10)).toEqual(testResult);
+    expect(toneMap('#eeeeee', 10)).toEqual(testResult);
   });
 
   test.concurrent('6 digits without hash', async () => {
-    expect(tones('eeeeee', 10)).toEqual(testResult);
+    expect(toneMap('eeeeee', 10)).toEqual(testResult);
   });
 
   test.concurrent('Exception: empty string', async () => {
-    expect(tones('')).toEqual({});
+    expect(toneMap('')).toEqual({});
   });
 
   test.concurrent('Exception: empty input', async () => {
-    expect(tones()).toEqual({});
+    expect(toneMap()).toEqual({});
   });
 });

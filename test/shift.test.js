@@ -1,6 +1,4 @@
-import tools from '../src/index.js';
-
-const { colorShift } = tools;
+import { colorShift } from '../src/index.js';
 
 describe('Color Shift', () => {
   test.concurrent('3 digits with hash', async () => {

@@ -1,6 +1,4 @@
-import tools from '../src/index.js';
-
-const { hex2rgb } = tools;
+import { hex2rgb } from '../src/index.js';
 
 describe('HEX to RGB', () => {
   test.concurrent('3 digits with hash', async () => {

@@ -1,8 +1,8 @@
-import hex2rgb from './hex2rgb.js';
+import { hex2rgb } from './hex2rgb.js';
 
 const roundMinMax = (value) => Math.min(255, Math.max(0, Math.round(value)));
 
-const colorShift = (hex, percentage = 0) => {
+export const colorShift = (hex, percentage = 0) => {
   const rgb = hex2rgb(hex);
   const multiplier = percentage / 100;
 
@@ -17,5 +17,3 @@ const colorShift = (hex, percentage = 0) => {
 
   return result ? '#' + result : undefined;
 };
-
-export default colorShift;
