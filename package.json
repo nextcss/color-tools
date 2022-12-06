@@ -1,6 +1,6 @@
 {
   "name": "@nextcss/color-tools",
-  "version": "0.9.5",
+  "version": "0.9.6",
   "description": "Color tools for browser and node.",
   "keywords": [
     "color",
