@@ -8,6 +8,20 @@
 
 Useful tools when working with colors.
 
+- [Introduction](#introduction)
+- [Installation](#installation)
+- [HEX to RGB](#hex-to-rgb)
+- [RGB to HEX](#rgb-to-hex)
+- [Color Shift](#color-shift)
+- [Tone Map](#tone-map)
+- [TypeScript](#typescript)
+- [Contribution](#contribution)
+- [License](#license)
+
+## Introduction
+
+This package is a module of [the nextcss project](https://github.com/nextcss). This package was created to maintain this module independently of the main package and to be used as a building block in other projects.
+
 ## Installation
 
 Install the package via yarn or npm.
@@ -25,17 +39,17 @@ npm i -D @nextcss/color-tools
 Convert hexadecimal color (3 or 6 digits) to rgb color array.
 
 ```js
-import { hex2rgb } from '@nextcss/color-tools';
+import { hex2rgb } from "@nextcss/color-tools";
 
-const rgb = hex2rgb('#2196f3');
+const rgb = hex2rgb("#2196f3");
 console.log(rgb);
 // Output -> [ 33, 150, 243 ]
 
-const rgb2 = hex2rgb('#eee');
+const rgb2 = hex2rgb("#eee");
 console.log(rgb2);
 // Output -> [ 238, 238, 238 ]
 
-const [red, green, blue] = hex2rgb('#2196f3');
+const [red, green, blue] = hex2rgb("#2196f3");
 console.log({ red, green, blue });
 // Output -> { red: 33, green: 150, blue: 243 }
 ```
@@ -45,7 +59,7 @@ console.log({ red, green, blue });
 Convert rgb color array to hexadecimal color.
 
 ```js
-import { rgb2hex } from '@nextcss/color-tools';
+import { rgb2hex } from "@nextcss/color-tools";
 
 const hex = rgb2hex([238, 238, 238]);
 console.log(hex);
@@ -57,13 +71,13 @@ console.log(hex);
 Shift a hexadecimal color (3 or 6 digits) by the specified percentage.
 
 ```js
-import { colorShift } from '@nextcss/color-tools';
+import { colorShift } from "@nextcss/color-tools";
 
-const color = colorShift('#eee', 10);
+const color = colorShift("#eee", 10);
 console.log(color);
 // Output -> #d6d6d6
 
-const color2 = colorShift('#eee', -10);
+const color2 = colorShift("#eee", -10);
 console.log(color2);
 // Output -> #f0f0f0
 ```
@@ -73,9 +87,9 @@ console.log(color2);
 Generate a tone map from a hexadecimal color (3 or 6 digits), between 50 and 950 tones.
 
 ```js
-import { toneMap } from '@nextcss/color-tools';
+import { toneMap } from "@nextcss/color-tools";
 
-const toneMap = toneMap('#eee');
+const toneMap = toneMap("#eee");
 console.log(toneMap);
 
 // Output -> {
@@ -109,13 +123,14 @@ might get you started:
 
 - `esModuleInterop` option in `compilerOptions`
 - `allowJs` option in `compilerOptions`
-- `declare module "*"` in `declarations.d.ts`
+- `declare module "*"` definition in `declarations.d.ts`
 
 ## Contribution
 
-Before you submit a Pull Request, please let us know what you want, as this package is part of a
-larger package.
+Before you submit a Pull Request, please let us know what you would like, as this package is part of a larger package.
 
 ## License
 
-MIT License
+MIT License @ 2022 [Zsolt Tövis](https://github.com/toviszsolt)
+
+If you found this project interesting, please consider supporting my open source work by [sponsoring me](https://github.com/sponsors/toviszsolt) / [give the repo a star](https://github.com/nextcss/color-tools) / [follow the nextcss project](https://github.com/nextcss).
