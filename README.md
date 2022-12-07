@@ -12,8 +12,14 @@ Useful tools when working with colors.
 - [Installation](#installation)
 - [HEX to RGB](#hex-to-rgb)
 - [RGB to HEX](#rgb-to-hex)
+- [HSL to HEX](#hsl-to-hex)
 - [Color Shift](#color-shift)
 - [Tone Map](#tone-map)
+- [Brightness](#brightness)
+- [Colorify](#colorify)
+- [Random HEX](#random-hex)
+- [Random RGB](#random-rgb)
+- [Random HSL](#random-hsl)
 - [TypeScript](#typescript)
 - [Contribution](#contribution)
 - [License](#license)
@@ -36,63 +42,129 @@ npm i -D @nextcss/color-tools
 
 ## HEX to RGB
 
-Convert hexadecimal color (3 or 6 digits) to rgb color array.
+Convert hexadecimal color (3, 6 or 8 digits) to RGB color array.
+
+### Syntax
+
+```js
+const Array = hex2rgb(hex: String);
+```
+
+### Example
 
 ```js
 import { hex2rgb } from "@nextcss/color-tools";
 
-const rgb = hex2rgb("#2196f3");
-console.log(rgb);
-// Output -> [ 33, 150, 243 ]
+const rgb1 = hex2rgb("#eee");
+console.log(rgb1);
+// Output → [ 238, 238, 238 ]
 
-const rgb2 = hex2rgb("#eee");
+const rgb2 = hex2rgb("#2196f3");
 console.log(rgb2);
-// Output -> [ 238, 238, 238 ]
+// Output → [ 33, 150, 243 ]
 
-const [red, green, blue] = hex2rgb("#2196f3");
-console.log({ red, green, blue });
-// Output -> { red: 33, green: 150, blue: 243 }
+const rgb3 = hex2rgb("#2196f3bf");
+console.log(rgb3);
+// Output → [ 33, 150, 243, 75 ]
+// the last element is alpha, defined as a percentage
+
+const [red, green, blue, alpha] = hex2rgb("#2196f3bf");
+console.log({ red, green, blue, alpha });
+// Output → { red: 33, green: 150, blue: 243, alpha:: 75 }
+// Example RGB string → rgb(33 150 243 / 75%)
+// Example RGBA string → rgba(33, 150, 243, .75)
 ```
 
 ## RGB to HEX
 
-Convert rgb color array to hexadecimal color.
+Convert RGB color array [`red`, `green`, `blue`, `alpha?`] to hexadecimal color.
+
+### Syntax
+
+```js
+const String = rgb2hex(rgb: Array);
+```
+
+### Example
 
 ```js
 import { rgb2hex } from "@nextcss/color-tools";
 
-const hex = rgb2hex([238, 238, 238]);
-console.log(hex);
-// Output -> '#eeeeee'
+const hex1 = rgb2hex([238, 238, 238]);
+console.log(hex1);
+// Output → '#eeeeee'
+
+const hex2 = rgb2hex([238, 238, 238, 75]);
+console.log(hex2);
+// Output → '#eeeeeebf'
+```
+
+## HSL to HEX
+
+Convert HSL color array [`hue`,`saturation`,`lightness`] to hexadecimal color.
+
+### Syntax
+
+```js
+const String = hsl2hex(hsl: Array);
+```
+
+### Example
+
+```js
+import { hsl2hex } from "@nextcss/color-tools";
+
+const hex1 = hsl2hex([200, 70, 50]);
+console.log(hex1);
+// Output → #269dd9
+
+const hex2 = hsl2hex([36, 90, 40]);
+console.log(hex2);
+// Output → #c2780a
 ```
 
 ## Color Shift
 
-Shift a hexadecimal color (3 or 6 digits) by the specified percentage.
+Shift a hexadecimal color (3, 6 or 8 digits) by the specified percentage. Positive shift results lighter colors, negative shift results darker colors.
+
+### Syntax
+
+```js
+const String = colorShift(hex: String, percentage: Number);
+```
+
+### Example
 
 ```js
 import { colorShift } from "@nextcss/color-tools";
 
 const color = colorShift("#eee", 10);
 console.log(color);
-// Output -> #d6d6d6
+// Output → #d6d6d6
 
 const color2 = colorShift("#eee", -10);
 console.log(color2);
-// Output -> #f0f0f0
+// Output → #f0f0f0
 ```
 
 ## Tone Map
 
-Generate a tone map from a hexadecimal color (3 or 6 digits), between 50 and 950 tones.
+Generate a tone map from a hexadecimal color (3, 6 or 8 digits), between `50` and `950` tones.
+
+### Syntax
+
+```js
+const Object = toneMap(hex: String);
+```
+
+### Example
 
 ```js
 import { toneMap } from "@nextcss/color-tools";
 
-const toneMap = toneMap("#eee");
-console.log(toneMap);
-
-// Output -> {
+const tones = toneMap("#eee");
+console.log(tones);
+// Output → {
 //   50: '#fdfdfd',
 //   100: '#fcfcfc',
 //   150: '#fbfbfb',
@@ -113,6 +185,147 @@ console.log(toneMap);
 //   900: '#303030',
 //   950: '#242424',
 // }
+```
+
+## Brightness
+
+Calculate brightness (percentage) of a hexadecimal color. For example, if the color brightness is `<150`, the color is `light`, otherwise it is `dark`.
+
+### Syntax
+
+```js
+const Number = colorShift(hex: String);
+```
+
+### Example
+
+```js
+import { brightness } from "@nextcss/color-tools";
+
+const level1 = brightness("#000");
+console.log(level1);
+// Output → 0
+
+const level2 = brightness("#ffffff");
+console.log(level2);
+// Output → 100
+
+const level3 = brightness("#269dd9");
+console.log(level3);
+// Output → 53
+```
+
+## Colorify
+
+Generate a hexadecimal color from any string (like username). Under the hood, it uses HSL to create the color, so you can set `saturation` (default: `70`) and `lightness` (default: `50`) values as an input.
+
+### Syntax
+
+```js
+const String = colorify(str: String);
+
+```
+
+### Example
+
+```js
+import { colorify } from "@nextcss/color-tools";
+
+const hex1 = colorify("John Doe");
+console.log(hex1);
+// Output → #40bf79
+
+const hex2 = colorify("JD");
+console.log(hex2);
+// Output → #4090bf
+
+const hex3 = colorify("J");
+console.log(hex3);
+// Output → #a2bf40
+```
+
+## Random HEX
+
+Generate a random hexadecimal color. Under the hood, it uses HSL to create the color, so you can set the `saturation` (default: `70`) and `lightness` (default: `50`) values as an input.
+
+### Syntax
+
+```js
+const String = randomHex(saturation?: Number, lightness?: Number);
+```
+
+### Example
+
+```js
+import { randomHex } from "@nextcss/color-tools";
+
+const hex1 = randomHex();
+console.log(hex1);
+// Output → #7de889
+
+const hex2 = randomHex(50);
+console.log(hex2);
+// Output → #b38cd9
+
+const hex3 = randomHex(65, 80);
+console.log(hex3);
+// Output → #abbbed
+```
+
+## Random RGB
+
+Generate a random RGB color array. Under the hood, it uses HSL to create the color, so you can set the `saturation` (default: `70`) and `lightness` (default: `50`) values as an input.
+
+### Syntax
+
+```js
+const Array = randomRgb(saturation?: Number, lightness?: Number);
+```
+
+### Example
+
+```js
+import { randomRgb } from "@nextcss/color-tools";
+
+const rgb1 = randomRgb();
+console.log(rgb1);
+// Output → [ 232, 193, 125 ]
+
+const rgb2 = randomRgb(50);
+console.log(rgb2);
+// Output → [ 217, 161, 140 ]
+
+const rgb3 = randomRgb(65, 80);
+console.log(rgb3);
+// Output → [ 206, 171, 237 ]
+```
+
+## Random HSL
+
+Generate a random HSL color array. Under the hood, it uses HSL to create the color, so you can set the `saturation` (default: `70`) and `lightness` (default: `50`) values as an input.
+
+### Syntax
+
+```js
+const Array = randomHsl(saturation?: Number, lightness?: Number);
+```
+
+### Example
+
+```js
+import { randomHsl } from "@nextcss/color-tools";
+
+const hsl1 = randomHsl();
+console.log(hsl1);
+// Output → [ 294, 70, 50 ]
+
+const hsl2 = randomHsl(50);
+console.log(hsl2);
+// Output → [ 79, 50, 50 ]
+
+const hsl3 = randomHsl(65, 80);
+console.log(hsl3);
+// Output → [ 274, 65, 80 ]
 ```
 
 ## TypeScript

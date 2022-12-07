@@ -1,4 +1,6 @@
 {
   "javascript.preferences.importModuleSpecifierEnding": "js",
-  "typescript.preferences.importModuleSpecifierEnding": "js"
+  "typescript.preferences.importModuleSpecifierEnding": "js",
+  "spellright.language": ["en"],
+  "spellright.documentTypes": ["latex", "plaintext", "html", "php", "markdown"]
 }
