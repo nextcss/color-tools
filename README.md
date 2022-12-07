@@ -235,13 +235,13 @@ const hex1 = colorify("John Doe");
 console.log(hex1);
 // Output → #40bf79
 
-const hex2 = colorify("JD");
+const hex2 = colorify("JD", 60);
 console.log(hex2);
-// Output → #4090bf
+// Output → #3394cc
 
-const hex3 = colorify("J");
+const hex3 = colorify("J", 60, 80);
 console.log(hex3);
-// Output → #a2bf40
+// Output → #dcebad
 ```
 
 ## Random HEX

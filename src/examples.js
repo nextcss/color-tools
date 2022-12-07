@@ -42,8 +42,8 @@ console.log("brightness", {
 
 console.log("colorify", {
   hex1: colorify("John Doe"),
-  hex2: colorify("JD"),
-  hex3: colorify("J"),
+  hex2: colorify("JD", 60),
+  hex3: colorify("J", 60, 80),
 });
 
 console.log("randomHex", {
