@@ -189,7 +189,7 @@ console.log(tones);
 
 ## Brightness
 
-Calculate brightness (percentage) of a hexadecimal color. For example, if the color brightness is `<150`, the color is `light`, otherwise it is `dark`.
+Calculate brightness (percentage) of a hexadecimal color. For example, if the color brightness is `<50`, the color is `dark`, otherwise it is `light`.
 
 ### Syntax
 
