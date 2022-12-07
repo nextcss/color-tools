@@ -222,8 +222,7 @@ Generate a hexadecimal color from any string (like username). Under the hood, it
 ### Syntax
 
 ```js
-const String = colorify(str: String);
-
+const String = colorify(str: String, saturation?: Number, lightness?: Number);
 ```
 
 ### Example

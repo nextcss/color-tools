@@ -1,6 +1,6 @@
 import { colorify } from "../src/index.js";
 
-describe("colorify", () => {
+describe("Colorify", () => {
   test.concurrent("Name without params", async () => {
     expect(colorify("John Doe")).toBeDefined();
   });
