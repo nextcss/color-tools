@@ -70,7 +70,7 @@ console.log(rgb3);
 
 const [red, green, blue, alpha] = hex2rgb("#2196f3bf");
 console.log({ red, green, blue, alpha });
-// Output → { red: 33, green: 150, blue: 243, alpha:: 75 }
+// Output → { red: 33, green: 150, blue: 243, alpha: 75 }
 // Example RGB string → rgb(33 150 243 / 75%)
 // Example RGBA string → rgba(33, 150, 243, .75)
 ```
