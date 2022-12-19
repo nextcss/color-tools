@@ -21,7 +21,7 @@ Useful tools when working with colors.
 - [Random RGB](#random-rgb)
 - [Random HSL](#random-hsl)
 - [TypeScript](#typescript)
-- [Contribution](#contribution)
+- [Guidelines](#guidelines)
 - [License](#license)
 
 ## Introduction
@@ -337,9 +337,9 @@ might get you started:
 - `allowJs` option in `compilerOptions`
 - `declare module "*"` definition in `declarations.d.ts`
 
-## Contribution
+## Guidelines
 
-Before you submit a Pull Request, please let us know what you would like, as this package is part of a larger package.
+To learn about the guidelines, please read the [Code of Conduct](CODE_OF_CONDUCT.md) and [Contributing](CONTRIBUTING.md) documents.
 
 ## License
 
