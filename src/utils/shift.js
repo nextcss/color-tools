@@ -1,7 +1,8 @@
 import { hex2rgb } from "./hex2rgb.js";
 import { rgb2hex } from "./rgb2hex.js";
+import { limiter } from "./limiter.js";
 
-const roundMinMax = (value) => Math.min(255, Math.max(0, Math.round(value)));
+const roundMinMax = (value) => limiter(Math.round(value), 0, 255);
 
 export const colorShift = (hex, percentage = 0) => {
   const rgb = hex2rgb(hex);
