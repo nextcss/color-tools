@@ -6,7 +6,7 @@
       "script": "watch",
       "group": "build",
       "problemMatcher": [],
-      "label": "npm: watch",
+      "label": "Rollup: watch",
       "detail": "rollup -c -w",
       "runOptions": {
         "runOn": "folderOpen"
