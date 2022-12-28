@@ -1,4 +1,4 @@
-import { randomHex, randomRgb, randomHsl } from "../src/index.js";
+import { randomHex, randomHsl, randomRgb } from "../../src/tools/random.js";
 
 describe("Random", () => {
   test.concurrent("HEX without param", async () => {

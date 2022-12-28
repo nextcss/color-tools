@@ -1,35 +1,35 @@
-import { hex2rgb } from "../src/index.js";
+import { brightness } from "../../src/tools/brightness.js";
 
-describe("HEX to RGB", () => {
+describe("Brightness", () => {
   test.concurrent("3 digits with hash", async () => {
-    expect(hex2rgb("#eee")).toEqual([238, 238, 238]);
+    expect(brightness("#eee")).toBe(93);
   });
 
   test.concurrent("3 digits without hash", async () => {
-    expect(hex2rgb("eee")).toEqual([238, 238, 238]);
+    expect(brightness("eee")).toBe(93);
   });
 
   test.concurrent("6 digits with hash", async () => {
-    expect(hex2rgb("#eeeeee")).toEqual([238, 238, 238]);
+    expect(brightness("#eeeeee")).toBe(93);
   });
 
   test.concurrent("6 digits without hash", async () => {
-    expect(hex2rgb("eeeeee")).toEqual([238, 238, 238]);
+    expect(brightness("eeeeee")).toBe(93);
   });
 
   test.concurrent("8 digits with hash", async () => {
-    expect(hex2rgb("#eeeeeeee")).toEqual([238, 238, 238, 93]);
+    expect(brightness("#eeeeeeee")).toBe(93);
   });
 
   test.concurrent("8 digits without hash", async () => {
-    expect(hex2rgb("eeeeeeee")).toEqual([238, 238, 238, 93]);
+    expect(brightness("eeeeeeee")).toBe(93);
   });
 
   test.concurrent("Exception: empty string", async () => {
-    expect(hex2rgb("")).toBeUndefined();
+    expect(brightness("")).toBeUndefined();
   });
 
   test.concurrent("Exception: empty input", async () => {
-    expect(hex2rgb()).toBeUndefined();
+    expect(brightness()).toBeUndefined();
   });
 });
