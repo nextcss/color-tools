@@ -45,7 +45,7 @@
   "bugs": {
     "url": "https://github.com/nextcss/color-tools/issues"
   },
-  "homepage": "https://github.com/nextcss/color-tools",
+  "homepage": "https://nextcss.com",
   "scripts": {
     "watch": "rollup -c -w",
     "build": "jest --verbose && rollup -c",
