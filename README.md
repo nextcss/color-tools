@@ -339,7 +339,7 @@ might get you started:
 
 ## Guidelines
 
-To learn about the guidelines, please read the [Code of Conduct](CODE_OF_CONDUCT.md) and [Contributing](CONTRIBUTING.md) documents.
+To learn about the guidelines, please read the [Code of Conduct](https://github.com/nextcss/.github/blob/main/CODE_OF_CONDUCT.md), [Contributing](https://github.com/nextcss/.github/blob/main/CONTRIBUTING.md) and [Security Policy](https://github.com/nextcss/color-tools/security/policy) documents.
 
 ## License
 
