@@ -9,7 +9,7 @@ export default [
   {
     input: "src/index.js",
     output: [
-      { name: "node-es", file: "dist/index.js", format: "es" },
+      { name: "node-esm", file: "dist/index.js", format: "es" },
       { name: "node-cjs", file: "dist/index.cjs", format: "cjs" },
     ],
     plugins: modulePlugins,
