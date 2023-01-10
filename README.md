@@ -9,6 +9,7 @@
 Useful tools when working with colors.
 
 - [Introduction](#introduction)
+- [Compatibility](#compatibility)
 - [Installation](#installation)
 - [HEX to RGB](#hex-to-rgb)
 - [RGB to HEX](#rgb-to-hex)
@@ -28,9 +29,13 @@ Useful tools when working with colors.
 
 This package is a module of [the nextcss project](https://github.com/nextcss). This package was created to maintain this module independently of the main package and to be used as a building block in other projects.
 
+## Compatibility
+
+This package includes both `ES modules` and `CommonJS` versions, so you can safely use both `import` and `require` statements in any environment. In the examples I'll use the `import` syntax, so don't be scared, feel free to use the `require` syntax if you like, that will work too.
+
 ## Installation
 
-Install the package via yarn or npm.
+Install the package via `yarn` or `npm`.
 
 ```bash
 yarn add -D @nextcss/color-tools
