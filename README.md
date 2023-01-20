@@ -1,7 +1,8 @@
-[![GitHub License](https://img.shields.io/github/license/nextcss/color-tools?style=flat-square)](https://github.com/nextcss/color-tools/blob/main/LICENSE)
-[![npm](https://img.shields.io/npm/v/@nextcss/color-tools?style=flat-square)](https://www.npmjs.com/package/@nextcss/color-tools)
+[![GitHub License](https://img.shields.io/github/license/nextcss/color-tools?style=flat)](https://github.com/nextcss/color-tools/blob/main/LICENSE)
+[![npm](https://img.shields.io/npm/v/@nextcss/color-tools?style=flat&color=red)](https://www.npmjs.com/package/@nextcss/color-tools)
+[![GitHub Repo stars](https://img.shields.io/github/stars/nextcss/color-tools?color=DAAA3F)](https://github.com/nextcss/color-tools)
 [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/nextcss/color-tools/node.js.yml?branch=main)](https://github.com/nextcss/color-tools/actions/workflows/node.js.yml)
-[![Codecov](https://img.shields.io/codecov/c/github/nextcss/color-tools?style=flat-square)](https://app.codecov.io/github/nextcss/color-tools)
+[![Codecov](https://img.shields.io/codecov/c/github/nextcss/color-tools?style=flat)](https://app.codecov.io/github/nextcss/color-tools)
 [![Sponsor](https://img.shields.io/static/v1?label=sponsor&message=❤&color=ff69b4)](https://github.com/sponsors/toviszsolt)
 
 # Color Tools
