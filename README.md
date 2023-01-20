@@ -223,7 +223,7 @@ console.log(level3);
 
 ## Colorify
 
-Generate a hexadecimal color from any string (like username). Under the hood, it uses HSL to create the color, so you can set `saturation` (default: `70`) and `lightness` (default: `50`) values as an input.
+Generate a hexadecimal color from any string (like username). Under the hood, it uses HSL to create the color, so you can set `saturation` (default: `50`) and `lightness` (default: `50`) values as an input.
 
 ### Syntax
 
