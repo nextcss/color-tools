@@ -199,7 +199,7 @@ Calculate brightness (percentage) of a hexadecimal color. For example, if the co
 ### Syntax
 
 ```js
-const Number = colorShift(hex: String);
+const Number = brightness(hex: String);
 ```
 
 ### Example
