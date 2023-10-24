@@ -22,7 +22,6 @@ Useful tools when working with colors.
 - [Random HEX](#random-hex)
 - [Random RGB](#random-rgb)
 - [Random HSL](#random-hsl)
-- [TypeScript](#typescript)
 - [Guidelines](#guidelines)
 - [License](#license)
 
@@ -32,7 +31,7 @@ This package is a module of [the nextcss project](https://github.com/nextcss). T
 
 ## Compatibility
 
-This package includes both `ES modules` and `CommonJS` versions, so you can safely use both `import` and `require` statements in any environment. In the examples I'll use the `import` syntax, so don't be scared, feel free to use the `require` syntax if you like, that will work too.
+This package can be used in both `browser` and `node` environments. Includes both `ES Modules` and `CommonJS` versions, so you can safely use both `import` and `require` statements in any environment. In the examples I'll use the `import` syntax, so don't be scared, feel free to use the `require` syntax if you like, that will work too. `TypeScript` support is also available.
 
 ## Installation
 
@@ -332,16 +331,6 @@ const hsl3 = randomHsl(65, 80);
 console.log(hsl3);
 // Output → [ 274, 65, 80 ]
 ```
-
-## TypeScript
-
-Since we don't use TypeScript, any issue with TypeScript is your business. For more information, see
-the Typescript documentation. If you're having problems with TypeScript, here are some hints that
-might get you started:
-
-- `esModuleInterop` option in `compilerOptions`
-- `allowJs` option in `compilerOptions`
-- `declare module "*"` definition in `declarations.d.ts`
 
 ## Guidelines
 
