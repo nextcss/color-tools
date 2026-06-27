@@ -1,0 +1,4 @@
+{
+  "verbose": true,
+  "ignore": ["**/data*/**", "coverage", "dist", "node_modules", "test"]
+}
