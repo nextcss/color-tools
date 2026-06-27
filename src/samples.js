@@ -1,14 +1,15 @@
 import {
-  hex2rgb,
-  rgb2hex,
-  hsl2hex,
-  colorShift,
-  toneMap,
   brightness,
   colorify,
+  colorShift,
+  hex2hsl,
+  hex2rgb,
+  hsl2hex,
   randomHex,
-  randomRgb,
   randomHsl,
+  randomRgb,
+  rgb2hex,
+  toneMap,
 } from "./index.js";
 
 console.log("hex2rgb", {
@@ -27,12 +28,18 @@ console.log("hsl2hex", {
   hex2: hsl2hex([36, 90, 40]),
 });
 
+console.log("hex2hsl", {
+  hsl1: hex2hsl("#eee"),
+  hsl2: hex2hsl("#2196f3"),
+  hsl3: hex2hsl("#2196f3bf"),
+});
+
 console.log("colorShift", {
   hex1: colorShift("#eee", 10),
   hex2: colorShift("#eee", -10),
 });
 
-console.log("toneMap", { tones: toneMap("#eee") });
+console.log("toneMap", { tones: toneMap("#F44336") });
 
 console.log("brightness", {
   lvl1: brightness("#000"),

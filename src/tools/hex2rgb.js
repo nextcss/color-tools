@@ -5,6 +5,8 @@ const regex = {
 };
 
 export const hex2rgb = (hex) => {
+  if (typeof hex !== "string") return;
+
   const matches =
     hex?.match(regex.hex3d) ||
     hex?.match(regex.hex6d) ||

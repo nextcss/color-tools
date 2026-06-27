@@ -12,7 +12,7 @@ export const hsl2hex = (hsl) => {
   const f = (n) => {
     const k = (n + h / 30) % 12;
     const color = l - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
-    return Math.round(255 * color)
+    return clamp(Math.round(255 * color), 0, 255)
       .toString(16)
       .padStart(2, "0");
   };
