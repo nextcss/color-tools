@@ -1,0 +1,51 @@
+name: Publish to npm
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: write
+  id-token: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24.x"
+          cache: "yarn"
+
+      - name: Install dependencies
+        run: yarn install --ignore-engines
+
+      - name: Build
+        run: yarn build
+
+      - name: Create dist archive
+        run: |
+          mkdir release-package
+          cp -r dist release-package/
+          cp package.json release-package/
+          cp README.md release-package/
+          cp LICENSE release-package/ 2>/dev/null || :
+          cd release-package
+          zip -r ../Release.zip .
+          cd ..
+
+      - name: Upload dist to release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: Release.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Publish to npm with Trusted Publishing
+        env:
+          NPM_CONFIG_PROVENANCE: true
+        run: npm publish --access public

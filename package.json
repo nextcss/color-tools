@@ -1,6 +1,6 @@
 {
   "name": "@nextcss/color-tools",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "Color tools for browser and node.",
   "keywords": [
     "color",
@@ -19,10 +19,11 @@
   ],
   "license": "MIT",
   "type": "module",
-  "main": "./dist/index.js",
+  "main": "./dist/index.cjs",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
     }
@@ -31,7 +32,8 @@
     "dist/*"
   ],
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "provenance": true
   },
   "author": {
     "name": "Zsolt Tovis",
@@ -48,19 +50,17 @@
   },
   "homepage": "https://nextcss.com",
   "scripts": {
-    "watch": "rollup -c -w",
-    "build": "jest --verbose && rollup -c",
-    "test": "jest --watch",
-    "coverage": "jest --collect-coverage"
+    "watch": "node build.js --watch",
+    "test": "jest --verbose",
+    "build": "jest --verbose && node build.js",
+    "coverage": "jest --collect-coverage",
+    "coverage:open": "(start ./coverage/lcov-report/index.html || open ./coverage/lcov-report/index.html || xdg-open ./coverage/lcov-report/index.html)"
   },
   "dependencies": {},
   "devDependencies": {
-    "@babel/preset-env": "^7.28.5",
-    "@rollup/plugin-commonjs": "^29.0.0",
-    "@rollup/plugin-node-resolve": "^16.0.3",
-    "jest": "^30.2.0",
-    "rollup": "^4.53.3",
-    "rollup-plugin-copy": "^3.5.0",
-    "rollup-plugin-terser": "^7.0.2"
+    "@types/jest": "^30.0.0",
+    "esbuild": "^0.28.1",
+    "jest": "^30.4.2",
+    "jest-esbuild": "^0.4.0"
   }
 }
