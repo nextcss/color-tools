@@ -1,6 +1,8 @@
-import { clamp } from "../utils/clamp.js";
+import { clamp } from './utils.js';
 
-export const rgb2oklab = (r, g, b) => {
+export const rgb2oklab = (rgb = []) => {
+  let [r, g, b] = rgb.map((ch) => clamp(ch, 0, 255));
+
   r /= 255;
   g /= 255;
   b /= 255;
@@ -29,8 +31,8 @@ export const rgb2oklab = (r, g, b) => {
   return [L, a, b_];
 };
 
-export const oklab2rgb = (L, a, b_) => {
-  // <-- itt átnevezve
+export const oklab2rgb = (oklab = []) => {
+  let [L, a, b_] = oklab;
   const l_ = L + 0.3963377774 * a + 0.2158037573 * b_;
   const m_ = L - 0.1055613458 * a - 0.0638541728 * b_;
   const s_ = L - 0.0894841775 * a - 1.291485548 * b_;
