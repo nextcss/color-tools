@@ -1,6 +1,6 @@
 import { hex2hsl, hex2rgb } from '../colors/hex.js';
 import { hsl2hex } from '../colors/hsl.js';
-import { oklab2rgb } from '../colors/oaklab.js';
+import { oklab2rgb } from '../colors/oklab.js';
 import { rgb2hex, rgb2oklab } from '../colors/rgb.js';
 import { clamp } from './utils.js';
 

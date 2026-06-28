@@ -1,4 +1,4 @@
-import { oklab2hex, oklab2hsl, oklab2hwb, oklab2rgb } from '../../src/colors/oaklab.js';
+import { oklab2hex, oklab2hsl, oklab2hwb, oklab2rgb } from '../../src/colors/oklab.js';
 
 describe('Convert Oklab color', () => {
   test.concurrent('Oklab neutral to RGB/HEX/HSL/HWB', async () => {
