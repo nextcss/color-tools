@@ -1,5 +1,5 @@
-import { hsl2hex } from './hex-hsl.js';
-import { hex2rgb } from './hex-rgb.js';
+import { hex2rgb } from '../colors/hex.js';
+import { hsl2hex } from '../colors/hsl.js';
 import { clamp, random } from './utils.js';
 
 export const randomHex = (s, l) => hsl2hex(randomHsl(s, l));

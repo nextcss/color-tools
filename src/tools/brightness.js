@@ -1,4 +1,4 @@
-import { hex2rgb } from './hex-rgb.js';
+import { hex2rgb } from '../colors/hex.js';
 
 const percentage = (number) => Math.round((number / 255) * 100);
 

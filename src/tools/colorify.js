@@ -1,4 +1,4 @@
-import { hsl2hex } from './hex-hsl.js';
+import { hsl2hex } from '../colors/hsl.js';
 
 export const colorify = (str = '', s = 50, l = 50) => {
   let hash = 0;

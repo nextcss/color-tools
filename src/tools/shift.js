@@ -1,6 +1,7 @@
-import { hex2hsl, hsl2hex } from './hex-hsl.js';
-import { hex2rgb, rgb2hex } from './hex-rgb.js';
-import { oklab2rgb, rgb2oklab } from './oklab-rgb.js';
+import { hex2hsl, hex2rgb } from '../colors/hex.js';
+import { hsl2hex } from '../colors/hsl.js';
+import { oklab2rgb } from '../colors/oaklab.js';
+import { rgb2hex, rgb2oklab } from '../colors/rgb.js';
 import { clamp } from './utils.js';
 
 const normalize = (value) => clamp(Math.round(value), 0, 255);
