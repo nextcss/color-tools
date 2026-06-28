@@ -4,13 +4,16 @@ import {
   hex2hsl,
   hex2rgb,
   hsl2hex,
+  hslColorShift,
+  hwbColorShift,
+  oklabColorShift,
   randomHex,
   randomHsl,
   randomRgb,
   rgb2hex,
+  rgbColorShift,
   toneMap,
 } from './index.js';
-import { rgbColorShift } from './tools/shift.js';
 
 console.log('hex2rgb', {
   rgb1: hex2rgb('#eee'),
@@ -69,4 +72,15 @@ console.log('randomHsl', {
   hsl1: randomHsl(),
   hsl2: randomHsl(50),
   hsl3: randomHsl(65, 80),
+});
+
+console.log('Color Shift', {
+  hex1: rgbColorShift('#0f64db', 10),
+  hex2: rgbColorShift('#0f64db', -10),
+  hex3: hslColorShift('#0f64db', 10),
+  hex4: hslColorShift('#0f64db', -10),
+  hex5: hwbColorShift('#0f64db', 10),
+  hex6: hwbColorShift('#0f64db', -10),
+  hex7: oklabColorShift('#0f64db', 10),
+  hex8: oklabColorShift('#0f64db', -10),
 });
