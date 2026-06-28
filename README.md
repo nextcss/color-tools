@@ -128,6 +128,35 @@ console.log(hex2);
 // Output → #c2780a
 ```
 
+## HEX to HSL
+
+Convert a hexadecimal color (3, 6 or 8 digits) to an HSL color array `[hue, saturation, lightness]`.
+
+### Syntax
+
+```js
+const Array  = hex2hsl(hex: string);
+```
+
+### Example
+
+```js
+import { hex2hsl } from "@nextcss/color-tools";
+
+const hsl1 = hex2hsl("#eee");
+console.log(hsl1);
+// Output → [0, 0, 93]
+
+const hsl2 = hex2hsl("#2196f3");
+console.log(hsl2);
+// Output → [207, 90, 54]
+
+const hsl3 = hex2hsl("#2196f3bf");
+console.log(hsl3);
+// Output → [207, 90, 54]
+// with alpha channel, alpha ignored
+```
+
 ## Color Shift
 
 Shift a hexadecimal color (3, 6 or 8 digits) by the specified percentage. Positive shift results lighter colors, negative shift results darker colors.
