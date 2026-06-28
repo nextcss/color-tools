@@ -1,6 +1,6 @@
 import { hex2rgb } from '../colors/hex.js';
 
-const percentage = (number) => Math.round((number / 255) * 100);
+const percentage = (number = 0) => Math.round((number / 255) * 100);
 
 export const brightness = (hex = '') => {
   const rgb = hex2rgb(hex);

@@ -17,6 +17,14 @@ describe('Convert HEX color', () => {
     expect(hex2hwb(hex)).toEqual([0, 93, 7]);
   });
 
+  test.concurrent('4 digits without hash', async () => {
+    const hex = 'eeee';
+    expect(hex2rgb(hex)).toEqual([238, 238, 238, 93]);
+    expect(hex2hsl(hex)).toEqual([0, 0, 93, 93]);
+    expect(hex2oklab(hex)).toEqual([0.949, 0.0, 0.0, 93]);
+    expect(hex2hwb(hex)).toEqual([0, 93, 7, 93]);
+  });
+
   test.concurrent('6 digits with hash', async () => {
     const hex = '#eeeeee';
     expect(hex2rgb(hex)).toEqual([238, 238, 238]);
@@ -47,14 +55,6 @@ describe('Convert HEX color', () => {
     expect(hex2hsl(hex)).toEqual([0, 0, 93, 93]);
     expect(hex2oklab(hex)).toEqual([0.949, 0.0, 0.0, 93]);
     expect(hex2hwb(hex)).toEqual([0, 93, 7, 93]);
-  });
-
-  test.concurrent('Exception: 4 digits', async () => {
-    const hex = 'eeee';
-    expect(hex2rgb(hex)).toBeUndefined();
-    expect(hex2hsl(hex)).toBeUndefined();
-    expect(hex2oklab(hex)).toBeUndefined();
-    expect(hex2hwb(hex)).toBeUndefined();
   });
 
   test.concurrent('Exception: 5 digits', async () => {

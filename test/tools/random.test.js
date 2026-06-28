@@ -1,6 +1,14 @@
-import { randomHex, randomHsl, randomRgb } from '../../src/tools/random.js';
+import { randomHex, randomHsl, randomHwb, randomOklab, randomRgb } from '../../src/tools/random.js';
 
 describe('Random', () => {
+  test.concurrent('Random colors', async () => {
+    expect(randomHex()).toBeDefined();
+    expect(randomRgb()).toBeDefined();
+    expect(randomHsl()).toBeDefined();
+    expect(randomHwb()).toBeDefined();
+    expect(randomOklab()).toBeDefined();
+  });
+
   test.concurrent('HEX without param', async () => {
     expect(randomHex()).toBeDefined();
   });
@@ -11,6 +19,10 @@ describe('Random', () => {
 
   test.concurrent('HEX with saturate and lightness', async () => {
     expect(randomHex(60, 40)).toBeDefined();
+  });
+
+  test.concurrent('HEX with saturate, lightness and alpha', async () => {
+    expect(randomHex(60, 40, 0.5)).toBeDefined();
   });
 
   test.concurrent('RGB without param', async () => {

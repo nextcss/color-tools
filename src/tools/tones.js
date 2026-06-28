@@ -1,12 +1,20 @@
-import { rgbColorShift } from './shift.js';
+import { hslColorShift, hwbColorShift, oklabColorShift, rgbColorShift } from './shift.js';
 
-const light = [-90, -85, -74, -62, -50, -40, -30, -20, -10];
-const dark = [0, 11, 23, 34, 45, 56, 68, 79, 90, 97];
-const tones = [...light, ...dark];
+const tones = [90, 85, 74, 62, 50, 40, 30, 20, 10, 0, -11, -23, -34, -45, -56, -68, -79, -90, -97];
+const TONES_LEN = tones.length;
 
-export const toneMap = (hex = '') =>
-  tones.reduce((results, tone, key) => {
-    const color = rgbColorShift(hex, tone);
-    results[key * 50 + 50] = color;
-    return results;
-  }, {});
+const shiftModes = {
+  rgb: rgbColorShift,
+  hsl: hslColorShift,
+  hwb: hwbColorShift,
+  oklab: oklabColorShift,
+};
+
+export const toneMap = (hex = '', mode = 'rgb') => {
+  const result = {};
+  const colorShift = shiftModes[mode] || rgbColorShift;
+  for (let i = 0; i < TONES_LEN; i++) {
+    result[i * 50 + 50] = colorShift(hex, tones[i]);
+  }
+  return result;
+};
