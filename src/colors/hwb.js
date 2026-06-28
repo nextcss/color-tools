@@ -63,6 +63,7 @@ export const hwb2rgb = (hwb = []) => {
 
   return alpha !== undefined ? [r, g, bl, alpha] : [r, g, bl];
 };
+
 // Convert HWB to HEX
 export const hwb2hex = (hwb = []) => {
   const len = hwb.length;
