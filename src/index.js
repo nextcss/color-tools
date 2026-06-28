@@ -1,4 +1,5 @@
 // Colors
+export * from './colors/hex.js';
 export * from './colors/hsl.js';
 export * from './colors/hwb.js';
 export * from './colors/oklab.js';
