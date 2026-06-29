@@ -48,8 +48,10 @@ export const hwbColorShift = (hex = '', percentage = 0) => {
 
   if (multiplier > 0) {
     hwb[1] = norm100(hwb[1] + (100 - hwb[1]) * multiplier);
+    hwb[2] = norm100(Math.min(hwb[2], 100 - hwb[1]));
   } else {
     hwb[2] = norm100(hwb[2] + (100 - hwb[2]) * -multiplier);
+    hwb[1] = norm100(Math.min(hwb[1], 100 - hwb[2]));
   }
 
   return hwb2hex(hwb);

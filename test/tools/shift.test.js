@@ -6,7 +6,7 @@ describe('Color Shift', () => {
     const shift = -10;
     expect(rgbColorShift(hex, shift)).toBe('#d6d6d6');
     expect(hslColorShift(hex, shift)).toBe('#d5d5d5');
-    expect(hwbColorShift(hex, shift)).toBe('#d9d9d9');
+    expect(hwbColorShift(hex, shift)).toBe('#d5d5d5');
     expect(oklabColorShift(hex, shift)).toBe('#cfcfcf');
   });
 
@@ -67,7 +67,7 @@ describe('Color Shift', () => {
     const shift = 101;
     expect(rgbColorShift(hex, shift)).toBe('#ffffff');
     expect(hslColorShift(hex, shift)).toBe('#ffffff');
-    expect(hwbColorShift(hex, shift)).toBe('#eeeeee');
+    expect(hwbColorShift(hex, shift)).toBe('#ffffff');
     expect(oklabColorShift(hex, shift)).toBe('#ffffff');
   });
 });
