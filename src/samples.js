@@ -76,6 +76,8 @@ console.log('toneMapCustom', [
   },
 ]);
 
+console.log('toneMapCustomKeys', toneMap('#f0b100', 'rgb', { custom1: 20, custom2: -20 }));
+
 console.log('brightness', {
   lvl1: brightness('#000'),
   lvl2: brightness('#ffffff'),

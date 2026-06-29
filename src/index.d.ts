@@ -154,7 +154,7 @@ export function hsl2hwb(hsl: HslValue): HwbValue | undefined;
 /**
  * Convert an HSL array to an OKLab array.
  * @param hsl An array of HSL or HSLA values.
- * @returns An array of OKLab or OKLBA values or undefined if the input is invalid.
+ * @returns An array of OKLab or OKLab + Alpha values or undefined if the input is invalid.
  * @example
  * const oklab = hsl2oklab([0, 100, 50]); // [0.627, 0.224, 0.125]
  * const oklaba = hsl2oklab([0, 100, 50, 0.5]); // [0.627, 0.224, 0.125, 0.5]
@@ -369,16 +369,16 @@ export function oklabColorShift(hex: string, percentage: number): HexValue | und
  *
  * @param hex - The HEX color string (e.g. `'#f0b100'`).
  * @param mode - The color space used for lightness shifting:
- *   - `'rgb'` — (default) fastest, slight hue drift on saturated colors
- *   - `'hsl'` — hue-preserving, can over-saturate at mid-tones
- *   - `'hwb'` — gentler shifts, paint-mixing model
- *   - `'oklab'` — perceptually uniform, most accurate for mixed hues
+ * - `'rgb'` — (default) fastest, slight hue drift on saturated colors
+ * - `'hsl'` — hue-preserving, can over-saturate at mid-tones
+ * - `'hwb'` — gentler shifts, paint-mixing model
+ * - `'oklab'` — perceptually uniform, most accurate for mixed hues
  * @param customTones - Optional overrides for individual tone steps.
- *   Keys are tone values (`50`–`950`), values are lightness offsets
- *   relative to the base color (`0` = no change, positive = lighter,
- *   negative = darker). Unspecified steps use the default linear scale.
- * @returns An object with tone keys (`50`–`950`) mapped to HEX strings,
- *   or `undefined` if the input hex is invalid.
+ * Keys can be standard tone values (`50`–`950`), or any custom number or string.
+ * Values are lightness offsets relative to the base color (`0` = no change,
+ * positive = lighter, negative = darker). Unspecified standard steps use the default linear scale.
+ * @returns An object with tone keys mapped to HEX strings,
+ * or `undefined` if the input hex is invalid.
  *
  * @example
  * // Default linear scale
@@ -388,17 +388,18 @@ export function oklabColorShift(hex: string, percentage: number): HexValue | und
  * tones[900]; // darker variant
  *
  * @example
- * // Custom non-linear scale (denser dark end, like Tailwind)
+ * // Custom scale with specific, non-linear, and arbitrary keys
  * const tones = toneMap('#f0b100', 'rgb', {
- *   300: 40,
- *   500: 0,
- *   700: -38,  // smaller step than default -40
- *   800: -55,  // compressed dark range
- *   900: -68,
+ * 300: 40,
+ * 500: 0,
+ * 700: -38,         // smaller step than default -40
+ * 900: -68,         // compressed dark range
+ * 0: 100,           // custom number key
+ * brandLight: 85,   // custom string key
  * });
  */
 export function toneMap(
   hex: string,
   mode?: 'rgb' | 'hsl' | 'hwb' | 'oklab',
-  customTones?: Partial<Record<ToneStep, number>>,
+  customTones?: Partial<Record<ToneStep | (number & {}) | (string & {}), number>>,
 ): ToneMap | undefined;
