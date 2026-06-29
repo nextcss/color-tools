@@ -1,4 +1,4 @@
-import { clamp } from '../../src/tools/utils.js';
+import { clamp, random } from '../../src/tools/utils.js';
 
 describe('Utils: clamp', () => {
   test.concurrent('In range', async () => {
@@ -19,5 +19,16 @@ describe('Utils: clamp', () => {
 
   test.concurrent('Out of range high', async () => {
     expect(clamp(200, 10, 100)).toBe(100);
+  });
+});
+
+describe('Utils: random', () => {
+  test.concurrent('In range', async () => {
+    expect(random(30, 31)).toBeGreaterThanOrEqual(30);
+    expect(random(30, 31)).toBeLessThanOrEqual(31);
+  });
+
+  test.concurrent('Narrow range', async () => {
+    expect(random(31, 31)).toBe(31);
   });
 });
