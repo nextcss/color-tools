@@ -65,11 +65,11 @@ This package works in both **browser** and **Node.js** environments. It includes
 
 ### Other operations
 
-| Operation               | Fastest | ops/s      |
-| ----------------------- | ------- | ---------- |
-| Random color generation | HSL     | 94,094,590 |
-| Color shifting          | RGB     | 7,915,344  |
-| Tone mapping            | RGB     | 200,815    |
+| Operation               | Fastest | ops/s      | Slowest | ops/s     |
+| ----------------------- | ------- | ---------- | ------- | --------- |
+| Random color generation | HSL     | 94,094,590 | OKLAB   | 3,559,931 |
+| Color shifting          | RGB     | 7,915,344  | OKLAB   | 2,209,869 |
+| Tone mapping            | RGB     | 200,815    | OKLAB   | 93,504    |
 
 > **Note:** Tone mapping operates on a fundamentally different scale — it internally uses color shifting, adding cumulative overhead per step — sub-200K ops/s reflects this layered computation rather than a single conversion.
 
