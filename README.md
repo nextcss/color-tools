@@ -4,7 +4,7 @@
 
 [![GitHub License](https://img.shields.io/github/license/nextcss/color-tools?style=flat)](https://github.com/nextcss/color-tools/blob/main/LICENSE) [![npm](https://img.shields.io/npm/v/@nextcss/color-tools?style=flat&color=red)](https://www.npmjs.com/package/@nextcss/color-tools) [![GitHub Repo stars](https://img.shields.io/github/stars/nextcss/color-tools?color=DAAA3F)](https://github.com/nextcss/color-tools/stargazers) [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/nextcss/color-tools/main.yml?branch=main)](https://github.com/nextcss/color-tools/actions/workflows/main.yml) [![Codecov](https://img.shields.io/codecov/c/github/nextcss/color-tools?style=flat)](https://app.codecov.io/github/nextcss/color-tools) [![Sponsor](https://img.shields.io/static/v1?label=sponsor&message=❤&color=ff69b4)](https://github.com/sponsors/toviszsolt)
 
-Brutally performance optimized useful tools for working with colors. This package is a module of [the nextcss project](https://github.com/nextcss). It provides a comprehensive set of color conversion and manipulation utilities for both browser and Node.js environments with full TypeScript support.
+Performance optimized useful tools for working with colors. This package is a module of [the nextcss project](https://github.com/nextcss). It provides a comprehensive set of color conversion and manipulation utilities for both browser and Node.js environments with full TypeScript support.
 
 ## Table of Contents
 
@@ -32,7 +32,7 @@ If you find this project useful, please consider sponsoring me by:
 
 [Donate via GitHub](https://github.com/sponsors/toviszsolt) ▪ [Donate via PayPal](https://www.paypal.com/paypalme/toviszsolt)
 
-[Give the repo a Star](https://github.com/nextcss/color-tools) ▪ [Follow me on GitHub](https://github.com/toviszsolt) ▪ [Share the project on X](https://twitter.com/intent/tweet?text=Check%20out%20Color%20Tools%20-%20Brutally%20performance%20optimized%20useful%20tools%20for%20working%20with%20colors!%20Perfect%20for%20JS%20apps%20and%20static%20sites.%20https://github.com/nextcss/color-tools)
+[Give the repo a Star](https://github.com/nextcss/color-tools) ▪ [Follow me on GitHub](https://github.com/toviszsolt) ▪ [Share the project on X](https://twitter.com/intent/tweet?text=Check%20out%20Color%20Tools%20-%20Performance%20optimized%20useful%20tools%20for%20working%20with%20colors!%20Perfect%20for%20JS%20apps%20and%20static%20sites.%20https://github.com/nextcss/color-tools)
 
 ---
 
