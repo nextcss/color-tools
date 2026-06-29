@@ -39,7 +39,7 @@ describe('Tones', () => {
     expect(toneMap('eeeeee', 10)).toEqual(testResult);
   });
 
-  test.concurrent('Exception: 4 digits', async () => {
+  test.concurrent('4 digits with hash', async () => {
     const testResultsWithAlpha = {};
     for (const prop in testResult) {
       testResultsWithAlpha[prop] = testResult[prop] + 'ed';
@@ -61,5 +61,14 @@ describe('Tones', () => {
 
   test.concurrent('Exception: empty input', async () => {
     expect(toneMap()).toEqual({});
+  });
+
+  test.concurrent('Custom tones', async () => {
+    const customTones = { custom1: 20, custom2: -20 };
+    const customToneResults = {
+      custom1: '#f1f1f1',
+      custom2: '#bebebe',
+    };
+    expect(toneMap('#eeeeee', 'rgb', customTones)).toEqual(customToneResults);
   });
 });

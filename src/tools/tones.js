@@ -10,9 +10,19 @@ const shiftModes = {
   oklab: oklabColorShift,
 };
 
-export const toneMap = (hex = '', mode = 'rgb') => {
+export const toneMap = (hex = '', mode = 'rgb', customTones) => {
+  const colorShift = shiftModes[mode] ?? rgbColorShift;
   const result = {};
-  const colorShift = shiftModes[mode] || rgbColorShift;
+
+  if (customTones) {
+    for (const key in customTones) {
+      if (Object.prototype.hasOwnProperty.call(customTones, key)) {
+        result[key] = colorShift(hex, customTones[key]);
+      }
+    }
+    return result;
+  }
+
   for (let i = 0; i < TONES_LEN; i++) {
     result[i * 50 + 50] = colorShift(hex, tones[i]);
   }

@@ -44,6 +44,38 @@ console.log('colorShift', {
 
 console.log('toneMap', { tones: toneMap('#F44336') });
 
+const customTonesColor = '#f0b100';
+const customTones = {
+  100: 80,
+  200: 60,
+  300: 40,
+  400: 20,
+  500: 0,
+  600: -20,
+  700: -40,
+  800: -60,
+  900: -80,
+};
+
+console.log('toneMapCustom', [
+  {
+    name: 'RGB Palette',
+    tones: Object.values(toneMap(customTonesColor, 'rgb', customTones)),
+  },
+  {
+    name: 'HSL Palette',
+    tones: Object.values(toneMap(customTonesColor, 'hsl', customTones)),
+  },
+  {
+    name: 'HWB Palette',
+    tones: Object.values(toneMap(customTonesColor, 'hwb', customTones)),
+  },
+  {
+    name: 'Oklab Palette',
+    tones: Object.values(toneMap(customTonesColor, 'oklab', customTones)),
+  },
+]);
+
 console.log('brightness', {
   lvl1: brightness('#000'),
   lvl2: brightness('#ffffff'),
