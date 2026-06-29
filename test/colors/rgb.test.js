@@ -63,4 +63,12 @@ describe('Convert RGB color', () => {
   test.concurrent('r-max with g < b branch (g < b ? 6 : 0)', async () => {
     expect(rgb2hwb([200, 10, 20])).toEqual([357, 4, 22]);
   });
+
+  test('rgb2hsl max = b when b > r > g', () => {
+    expect(rgb2hsl([150, 50, 200])).toBeDefined(); // b(200) > r(150) > g(50)
+  });
+
+  test('rgb2hwb max = b when b > r > g', () => {
+    expect(rgb2hwb([150, 50, 200])).toBeDefined(); // b(200) > r(150) > g(50)
+  });
 });

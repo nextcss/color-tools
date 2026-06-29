@@ -14,8 +14,7 @@ export const hwb2rgb = (hwb = []) => {
   const mix = 1 - w - b;
 
   if (mix <= 0) {
-    const wb = w + b;
-    const val = ((wb === 0 ? 0 : w / wb) * 255 + 0.5) | 0;
+    const val = ((w / (w + b)) * 255 + 0.5) | 0;
     return alpha !== undefined ? [val, val, val, alpha] : [val, val, val];
   }
 

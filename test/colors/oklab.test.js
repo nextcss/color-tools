@@ -34,4 +34,16 @@ describe('Convert Oklab color', () => {
     expect(oklab2hsl()).toBeUndefined();
     expect(oklab2hwb()).toBeUndefined();
   });
+
+  test('toSRGB clamps to 255 when linear value >= 1', () => {
+    expect(oklab2rgb([1, 0, 0])).toEqual([255, 255, 255]);
+  });
+
+  test('toSRGB linear segment boundary', () => {
+    const dark = oklab2rgb([0.1, 0, 0]);
+    const light = oklab2rgb([0.2, 0, 0]);
+    expect(dark).toBeDefined();
+    expect(light).toBeDefined();
+    expect(dark[0]).toBeLessThan(light[0]);
+  });
 });
