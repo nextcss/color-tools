@@ -13,7 +13,7 @@ import {
   rgb2hex,
   rgbColorShift,
   toneMap,
-} from './index.js';
+} from '../src/index.js';
 
 console.log('hex2rgb', {
   rgb1: hex2rgb('#eee'),
