@@ -31,7 +31,7 @@ import {
   rgb2oklab,
   rgbColorShift,
   toneMap,
-} from './dist/index.js';
+} from './src/index.js';
 
 const hex = '#808080cc';
 const rgb = [128, 128, 128, 75];
