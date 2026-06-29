@@ -13,7 +13,7 @@ export type HslValue = ColorArray;
 /** An HWB or HWBA color value, which can be an array of three or four numbers. */
 export type HwbValue = ColorArray;
 
-/** An OKLab or OKLaba color value, which can be an array of three or four numbers. */
+/** An OKLAB or OKLABA color value, which can be an array of three or four numbers. */
 export type OklabValue = ColorArray;
 
 /** A CMYK color value, which can be an array of four or five numbers. */
@@ -75,9 +75,9 @@ export function hex2hsl(hex: HexValue): HslValue | undefined;
 export function hex2hwb(hex: HexValue): HwbValue | undefined;
 
 /**
- * Convert a HEX color string to an OKLab array.
+ * Convert a HEX color string to an OKLAB array.
  * @param hex The HEX color string.
- * @returns An array of OKLab values or undefined if the input is invalid.
+ * @returns An array of OKLAB values or undefined if the input is invalid.
  * @example
  * const oklab = hex2oklab('#ff0000'); // [0.627, 0.224, 0.125]
  * const oklaba = hex2oklab('#ff000080'); // [0.627, 0.224, 0.125, 50]
@@ -125,9 +125,9 @@ export function rgb2hsl(rgb: RgbValue): HslValue | undefined;
 export function rgb2hwb(rgb: RgbValue): HwbValue | undefined;
 
 /**
- * Convert an RGB array to an OKLab array.
+ * Convert an RGB array to an OKLAB array.
  * @param rgb An array of RGB values.
- * @returns An array of OKLab values or undefined if the input is invalid.
+ * @returns An array of OKLAB values or undefined if the input is invalid.
  * @example
  * const oklab = rgb2oklab([255, 0, 0]); // [0.627, 0.224, 0.125]
  * const oklaba = rgb2oklab([255, 0, 0, 50]); // [0.627, 0.224, 0.125, 50]
@@ -175,9 +175,9 @@ export function hsl2rgb(hsl: HslValue): RgbValue | undefined;
 export function hsl2hwb(hsl: HslValue): HwbValue | undefined;
 
 /**
- * Convert an HSL array to an OKLab array.
+ * Convert an HSL array to an OKLAB array.
  * @param hsl An array of HSL or HSLA values.
- * @returns An array of OKLab or OKLab + Alpha values or undefined if the input is invalid.
+ * @returns An array of OKLAB or OKLAB + Alpha values or undefined if the input is invalid.
  * @example
  * const oklab = hsl2oklab([0, 100, 50]); // [0.627, 0.224, 0.125]
  * const oklaba = hsl2oklab([0, 100, 50, 50]); // [0.627, 0.224, 0.125, 50]
@@ -225,9 +225,9 @@ export function hwb2rgb(hwb: HwbValue): RgbValue | undefined;
 export function hwb2hsl(hwb: HwbValue): HslValue | undefined;
 
 /**
- * Convert an HWB array to an OKLab array.
+ * Convert an HWB array to an OKLAB array.
  * @param hwb An array of HWB or HWBA values.
- * @returns An array of OKLab or OKLABA values or undefined if the input is invalid.
+ * @returns An array of OKLAB or OKLABA values or undefined if the input is invalid.
  * @example
  * const oklab = hwb2oklab([0, 0, 50]); // [0.627, 0.224, 0.125]
  * const oklaba = hwb2oklab([0, 0, 50, 50]); // [0.627, 0.224, 0.125, 50]
@@ -245,8 +245,8 @@ export function hwb2oklab(hwb: HwbValue): OklabValue | undefined;
 export function hwb2cmyk(hwb: HwbValue): CmykValue | undefined;
 
 /**
- * Convert an OKLab array to a HEX color string.
- * @param oklab An array of OKLab or OKLABA values.
+ * Convert an OKLAB array to a HEX color string.
+ * @param oklab An array of OKLAB or OKLABA values.
  * @returns A HEX or HEXA color string or undefined if the input is invalid.
  * @example
  * const hex = oklab2hex([0.627, 0.224, 0.125]); // '#ff0000'
@@ -255,8 +255,8 @@ export function hwb2cmyk(hwb: HwbValue): CmykValue | undefined;
 export function oklab2hex(oklab: OklabValue): HexValue | undefined;
 
 /**
- * Convert an OKLab array to an RGB array.
- * @param oklab An array of OKLab or OKLABA values.
+ * Convert an OKLAB array to an RGB array.
+ * @param oklab An array of OKLAB or OKLABA values.
  * @returns An array of RGB or RGBA values or undefined if the input is invalid.
  * @example
  * const rgb = oklab2rgb([0.627, 0.224, 0.125]); // [255, 0, 0]
@@ -265,8 +265,8 @@ export function oklab2hex(oklab: OklabValue): HexValue | undefined;
 export function oklab2rgb(oklab: OklabValue): RgbValue | undefined;
 
 /**
- * Convert an OKLab array to an HSL array.
- * @param oklab An array of OKLab or OKLABA values.
+ * Convert an OKLAB array to an HSL array.
+ * @param oklab An array of OKLAB or OKLABA values.
  * @returns An array of HSL or HSLA values or undefined if the input is invalid.
  * @example
  * const hsl = oklab2hsl([0.627, 0.224, 0.125]); // [0, 100, 50]
@@ -275,8 +275,8 @@ export function oklab2rgb(oklab: OklabValue): RgbValue | undefined;
 export function oklab2hsl(oklab: OklabValue): HslValue | undefined;
 
 /**
- * Convert an OKLab array to an HWB array.
- * @param oklab An array of OKLab or OKLABA values.
+ * Convert an OKLAB array to an HWB array.
+ * @param oklab An array of OKLAB or OKLABA values.
  * @returns An array of HWB or HWBA values or undefined if the input is invalid.
  * @example
  * const hwb = oklab2hwb([0.627, 0.224, 0.125]); // [0, 0, 0]
@@ -285,14 +285,64 @@ export function oklab2hsl(oklab: OklabValue): HslValue | undefined;
 export function oklab2hwb(oklab: OklabValue): HwbValue | undefined;
 
 /**
- * Convert an OKLab array to a CMYK array.
- * @param oklab An array of OKLab or OKLABA values.
+ * Convert an OKLAB array to a CMYK array.
+ * @param oklab An array of OKLAB or OKLABA values.
  * @returns An array of CMYK values or undefined if the input is invalid.
  * @example
  * const cmyk = oklab2cmyk([0.627, 0.224, 0.125]); // [0, 100, 100, 0]
  * const cmyka = oklab2cmyk([0.627, 0.224, 0.125, 50]); // [0, 100, 100, 0, 50]
  */
 export function oklab2cmyk(oklab: OklabValue): CmykValue | undefined;
+
+/**
+ * Convert a CMYK array to a HEX color string.
+ * @param cmyk An array of CMYK values.
+ * @returns A HEX or HEXA color string or undefined if the input is invalid.
+ * @example
+ * const hex = cmyk2hex([0, 100, 100, 0]); // '#ff0000'
+ * const hexa = cmyk2hex([0, 100, 100, 0, 50]); // '#ff000080'
+ */
+export function cmyk2hex(cmyk: CmykValue): HexValue | undefined;
+
+/**
+ * Convert a CMYK array to an HSL array.
+ * @param cmyk An array of CMYK values.
+ * @returns An array of HSL or HSLA values or undefined if the input is invalid.
+ * @example
+ * const hsl = cmyk2hsl([0, 100, 100, 0]); // [0, 100, 50]
+ * const hsla = cmyk2hsl([0, 100, 100, 0, 50]); // [0, 100, 50, 50]
+ */
+export function cmyk2hsl(cmyk: CmykValue): HslValue | undefined;
+
+/**
+ * Convert a CMYK array to an HWB array.
+ * @param cmyk An array of CMYK values.
+ * @returns An array of HWB or HWBA values or undefined if the input is invalid.
+ * @example
+ * const hwb = cmyk2hwb([0, 100, 100, 0]); // [0, 0, 0]
+ * const hwba = cmyk2hwb([0, 100, 100, 0, 50]); // [0, 0, 0, 50]
+ */
+export function cmyk2hwb(cmyk: CmykValue): HwbValue | undefined;
+
+/**
+ * Convert a CMYK array to an OKLAB array.
+ * @param cmyk An array of CMYK values.
+ * @returns An array of OKLAB or OKLABA values or undefined if the input is invalid.
+ * @example
+ * const oklab = cmyk2oklab([0, 100, 100, 0]); // [0.627, 0.224, 0.125]
+ * const oklaba = cmyk2oklab([0, 100, 100, 0, 50]); // [0.627, 0.224, 0.125, 50]
+ */
+export function cmyk2oklab(cmyk: CmykValue): OklabValue | undefined;
+
+/**
+ * Convert a CMYK array to an RGB array.
+ * @param cmyk An array of CMYK values.
+ * @returns An array of RGB or RGBA values or undefined if the input is invalid.
+ * @example
+ * const rgb = cmyk2rgb([0, 100, 100, 0]); // [255, 0, 0]
+ * const rgba = cmyk2rgb([0, 100, 100, 0, 50]); // [255, 0, 0, 50]
+ */
+export function cmyk2rgb(cmyk: CmykValue): RgbValue | undefined;
 
 /**
  * Generate a random HEX color string.
@@ -343,11 +393,11 @@ export function randomHsl(saturation?: number, lightness?: number, alpha?: numbe
 export function randomHwb(saturation?: number, lightness?: number, alpha?: number): HwbValue | undefined;
 
 /**
- * Generate a random OKLab array.
+ * Generate a random OKLAB array.
  * @param saturation The saturation value (0-100).
  * @param lightness The lightness value (0-100).
  * @param alpha The alpha value (0-100).
- * @returns A random OKLab array or undefined if the input is invalid.
+ * @returns A random OKLAB array or undefined if the input is invalid.
  * @example
  * const oklab = randomOklab(70, 50); // [0.627, 0.224, 0.125]
  * const oklaba = randomOklab(70, 50, 50); // [0.627, 0.224, 0.125, 50]
@@ -419,7 +469,7 @@ export function hslColorShift(hex: string, percentage: number): HexValue | undef
  */
 export function hwbColorShift(hex: string, percentage: number): HexValue | undefined;
 
-/** Shift the brightness of a HEX color string by a percentage using OKLab color space.
+/** Shift the brightness of a HEX color string by a percentage using OKLAB color space.
  * @param hex The HEX color string.
  * @param percentage The percentage to shift the brightness by. Positive values lighten, negative values darken.
  * @returns A HEX color string with the adjusted brightness or undefined if the input is invalid.

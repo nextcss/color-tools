@@ -87,14 +87,14 @@ Environment: Benchmarks were run on an Intel Core i5-12600K, Node.js v22.16.0, u
 
 ### Internal conversion throughput (ops/s)
 
-| From \\ To | HEX   | RGB   | HSL   | HWB   | OKLAB | CMYK |
-| ---------- | ----- | ----- | ----- | ----- | ----- | ---- |
-| **HEX**    | —     | 17.1M | 13.4M | 13.2M | 3.8M  | x    |
-| **RGB**    | 58.5M | —     | 56.7M | 56.2M | 5.1M  | x    |
-| **HSL**    | 11.0M | 16.2M | —     | 13.5M | 3.9M  | x    |
-| **HWB**    | 32.1M | 69.5M | 32.7M | —     | 4.9M  | x    |
-| **OKLAB**  | 5.8M  | 7.7M  | 6.2M  | 6.1M  | —     | x    |
-| **CMYK**   | x     | x     | x     | x     | x     | —    |
+| From \\ To | HEX   | RGB   | HSL   | HWB   | OKLAB | CMYK  |
+| ---------- | ----- | ----- | ----- | ----- | ----- | ----- |
+| **HEX**    | —     | 17.1M | 13.5M | 13.8M | 4.8M  | 13.4M |
+| **RGB**    | 61.3M | —     | 57.0M | 54.7M | 5.1M  | 49.6M |
+| **HSL**    | 11.0M | 16.2M | —     | 13.5M | 3.9M  | 12.4M |
+| **HWB**    | 32.1M | 69.5M | 32.7M | —     | 4.9M  | 29.9M |
+| **OKLAB**  | 5.8M  | 7.7M  | 6.2M  | 6.1M  | —     | 6.1M  |
+| **CMYK**   | 15.5M | 77.7M | 37.3M | 39.9M | 5.0M  | —     |
 
 > **Note:** OKLAB conversions are intentionally slower — they involve perceptually uniform color math with significantly more CPU-intensive calculations (non-linear gamma expansion, matrix transforms) compared to geometric color space conversions like HSL or HWB.
 

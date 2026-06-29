@@ -1,30 +1,41 @@
 import b from 'benny';
 import { colord } from 'colord';
 import {
+  cmyk2hex,
+  cmyk2hsl,
+  cmyk2hwb,
+  cmyk2oklab,
+  cmyk2rgb,
+  hex2cmyk,
   hex2hsl,
   hex2hwb,
   hex2oklab,
   hex2rgb,
+  hsl2cmyk,
   hsl2hex,
   hsl2hwb,
   hsl2oklab,
   hsl2rgb,
   hslColorShift,
+  hwb2cmyk,
   hwb2hex,
   hwb2hsl,
   hwb2oklab,
   hwb2rgb,
   hwbColorShift,
+  oklab2cmyk,
   oklab2hex,
   oklab2hsl,
   oklab2hwb,
   oklab2rgb,
   oklabColorShift,
+  randomCmyk,
   randomHex,
   randomHsl,
   randomHwb,
   randomOklab,
   randomRgb,
+  rgb2cmyk,
   rgb2hex,
   rgb2hsl,
   rgb2hwb,
@@ -39,6 +50,7 @@ const rgbString = 'rgb(128, 128, 128, 0.75)';
 const hsl = [0, 0, 50, 75];
 const hwb = [0, 50, 50, 75];
 const lab = [0.5, 0, 0, 75];
+const cmyk = [0, 0, 0, 50, 75];
 
 b.suite(
   'Parse HEX and convert to RGB object/array',
@@ -106,6 +118,7 @@ b.suite(
   b.add('HSL', () => hex2hsl(hex)),
   b.add('HWB', () => hex2hwb(hex)),
   b.add('OKLAB', () => hex2oklab(hex)),
+  b.add('CMYK', () => hex2cmyk(hex)),
   b.cycle(),
   b.complete(),
 );
@@ -116,6 +129,7 @@ b.suite(
   b.add('HSL', () => rgb2hsl(rgb)),
   b.add('HWB', () => rgb2hwb(rgb)),
   b.add('OKLAB', () => rgb2oklab(rgb)),
+  b.add('CMYK', () => rgb2cmyk(rgb)),
   b.cycle(),
   b.complete(),
 );
@@ -126,6 +140,7 @@ b.suite(
   b.add('RGB', () => hsl2rgb(hsl)),
   b.add('HWB', () => hsl2hwb(hsl)),
   b.add('OKLAB', () => hsl2oklab(hsl)),
+  b.add('CMYK', () => hsl2cmyk(hsl)),
   b.cycle(),
   b.complete(),
 );
@@ -136,6 +151,7 @@ b.suite(
   b.add('RGB', () => hwb2rgb(hwb)),
   b.add('HSL', () => hwb2hsl(hwb)),
   b.add('OKLAB', () => hwb2oklab(hwb)),
+  b.add('CMYK', () => hwb2cmyk(hwb)),
   b.cycle(),
   b.complete(),
 );
@@ -146,6 +162,18 @@ b.suite(
   b.add('RGB', () => oklab2rgb(lab)),
   b.add('HSL', () => oklab2hsl(lab)),
   b.add('HWB', () => oklab2hwb(lab)),
+  b.add('CMYK', () => oklab2cmyk(lab)),
+  b.cycle(),
+  b.complete(),
+);
+
+b.suite(
+  'Benchmark CMYK converts',
+  b.add('HEX', () => cmyk2hex(cmyk)),
+  b.add('RGB', () => cmyk2rgb(cmyk)),
+  b.add('HSL', () => cmyk2hsl(cmyk)),
+  b.add('HWB', () => cmyk2hwb(cmyk)),
+  b.add('OKLAB', () => cmyk2oklab(cmyk)),
   b.cycle(),
   b.complete(),
 );
@@ -157,6 +185,7 @@ b.suite(
   b.add('HSL', () => randomHsl()),
   b.add('HWB', () => randomHwb()),
   b.add('OKLAB', () => randomOklab()),
+  b.add('CMYK', () => randomCmyk()),
   b.cycle(),
   b.complete(),
 );
