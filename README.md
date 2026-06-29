@@ -2,32 +2,26 @@
 
 # Color Tools
 
-Useful tools when working with colors. This README is updated to match the current API.
+Useful tools when working with colors. This package is a module of [the nextcss project](https://github.com/nextcss). It provides a comprehensive set of color conversion and manipulation utilities for both browser and Node.js environments with full TypeScript support.
 
-- [Introduction](#introduction)
-- [Compatibility](#compatibility)
+## Table of Contents
+
 - [Installation](#installation)
+- [Compatibility](#compatibility)
 - [Conversion Functions](#conversion-functions)
   - [HEX Conversions](#hex-conversions)
   - [RGB Conversions](#rgb-conversions)
   - [HSL Conversions](#hsl-conversions)
   - [HWB Conversions](#hwb-conversions)
   - [OKLab Conversions](#oklab-conversions)
-- [Color Shift](#color-shift)
-- [Tone Map](#tone-map)
-- [Brightness](#brightness)
-- [Colorify](#colorify)
-- [Random Colors](#random-colors)
+- [Useful Tools](#useful-tools)
+  - [Color Shift](#color-shift)
+  - [Tone Map](#tone-map)
+  - [Brightness](#brightness)
+  - [Colorify](#colorify)
+  - [Random Colors](#random-colors)
 - [Guidelines](#guidelines)
 - [License](#license)
-
-## Introduction
-
-This package is a module of [the nextcss project](https://github.com/nextcss). It provides a comprehensive set of color conversion and manipulation utilities for both browser and Node.js environments with full TypeScript support.
-
-## Compatibility
-
-This package works in both **browser** and **Node.js** environments. It includes ESM and CommonJS builds, so both `import` and `require` statements work everywhere. Full TypeScript support is included.
 
 ## Installation
 
@@ -38,6 +32,10 @@ yarn add -D @nextcss/color-tools
 ```bash
 npm i -D @nextcss/color-tools
 ```
+
+## Compatibility
+
+This package works in both **browser** and **Node.js** environments. It includes ESM and CommonJS builds, so both `import` and `require` statements work everywhere. Full TypeScript support is included.
 
 ## Conversion Functions
 
@@ -236,15 +234,19 @@ oklab2hsl([0.627, 0.224, 0.125]); // [0, 100, 50]
 oklab2hwb([0.627, 0.224, 0.125]); // [0, 0, 0]
 ```
 
-## Color Shift
+## Useful Tools
+
+Useful tools for color manipulation, including brightness shifting, tone mapping, and random color generation.
+
+### Color Shift
 
 Shift the brightness of a color by a percentage. Positive values lighten, negative values darken. Four implementations available using different color spaces — choose based on perceptual needs.
 
-### RGB Color Shift
+#### RGB Color Shift
 
 Shift using RGB color space.
 
-#### Syntax
+##### Syntax
 
 ```ts
 rgbColorShift(hex: string, percentage: number): string | undefined
@@ -257,7 +259,7 @@ rgbColorShift(hex: string, percentage: number): string | undefined
   - Positive values: lighten the color
   - Negative values: darken the color
 
-#### Example
+##### Example
 
 ```js
 import { rgbColorShift } from '@nextcss/color-tools';
@@ -266,11 +268,11 @@ rgbColorShift('#eee', 10); // '#f5f5f5' (lighter)
 rgbColorShift('#eee', -10); // '#e5e5e5' (darker)
 ```
 
-### HSL Color Shift
+#### HSL Color Shift
 
 Shift using HSL color space.
 
-#### Syntax
+##### Syntax
 
 ```ts
 hslColorShift(hex: string, percentage: number): string | undefined
@@ -283,7 +285,7 @@ hslColorShift(hex: string, percentage: number): string | undefined
   - Positive values: lighten the color
   - Negative values: darken the color
 
-#### Example
+##### Example
 
 ```js
 import { hslColorShift } from '@nextcss/color-tools';
@@ -292,11 +294,11 @@ hslColorShift('#2196f3', 20); // lighter
 hslColorShift('#2196f3', -20); // darker
 ```
 
-### HWB Color Shift
+#### HWB Color Shift
 
 Shift using HWB color space.
 
-#### Syntax
+##### Syntax
 
 ```ts
 hwbColorShift(hex: string, percentage: number): string | undefined
@@ -309,7 +311,7 @@ hwbColorShift(hex: string, percentage: number): string | undefined
   - Positive values: lighten the color
   - Negative values: darken the color
 
-#### Example
+##### Example
 
 ```js
 import { hwbColorShift } from '@nextcss/color-tools';
@@ -318,11 +320,11 @@ hwbColorShift('#2196f3', 15); // lighter
 hwbColorShift('#2196f3', -15); // darker
 ```
 
-### OKLab Color Shift
+#### OKLab Color Shift
 
 Shift using OKLab (best for perceptually uniform results).
 
-#### Syntax
+##### Syntax
 
 ```ts
 oklabColorShift(hex: string, percentage: number): string | undefined
@@ -335,7 +337,7 @@ oklabColorShift(hex: string, percentage: number): string | undefined
   - Positive values: lighten the color
   - Negative values: darken the color
 
-#### Example
+##### Example
 
 ```js
 import { oklabColorShift } from '@nextcss/color-tools';
@@ -344,11 +346,11 @@ oklabColorShift('#2196f3', 15); // perceptually lighter
 oklabColorShift('#2196f3', -15); // perceptually darker
 ```
 
-## Tone Map
+### Tone Map
 
 Generate a complete tonal scale from a base color. Returns an object with tone steps (50–950) mapped to HEX color strings.
 
-### Syntax
+#### Syntax
 
 ```ts
 toneMap(
@@ -367,7 +369,7 @@ toneMap(
   - Each value determines how much to lighten or darken the base color for that tone step.
   - If omitted, uses default tone steps (50, 100, 150, ..., 950) with default percentages: `[90, 85, 74, 62, 50, 40, 30, 20, 10, 0, -11, -23, -34, -45, -56, -68, -79, -90, -97]`
 
-### Example
+#### Example
 
 ```js
 import { toneMap } from '@nextcss/color-tools';
@@ -407,17 +409,17 @@ const customStepsMap = toneMap('#2196f3', 'oklab', {
 });
 ```
 
-## Brightness
+### Brightness
 
 Calculate the perceived brightness of a color as a percentage (0–100). Useful for determining text contrast or applying adaptive styling.
 
-### Syntax
+#### Syntax
 
 ```ts
 brightness(hex: string): number | undefined
 ```
 
-### Example
+#### Example
 
 ```js
 import { brightness } from '@nextcss/color-tools';
@@ -434,11 +436,11 @@ if (brightness(color) < 50) {
 }
 ```
 
-## Colorify
+### Colorify
 
 Generate a consistent, deterministic color from any string input (e.g., usernames, IDs). Outputs the same color for the same input every time.
 
-### Syntax
+#### Syntax
 
 ```ts
 colorify(
@@ -456,7 +458,7 @@ Parameters:
 - `lightness` (optional): 0–100 (default: 50)
 - `alpha` (optional): 0–100 (default: 100)
 
-### Example
+#### Example
 
 ```js
 import { colorify } from '@nextcss/color-tools';
@@ -474,13 +476,13 @@ colorify('dark-mode', 60, 30, 80); // dark with 80% opacity
 colorify('alice') === colorify('alice'); // true
 ```
 
-## Random Colors
+### Random Colors
 
 Generate random colors in any format. All random functions accept optional `saturation`, `lightness`, and `alpha` parameters.
 
-### Random HEX
+#### Random HEX
 
-#### Syntax
+##### Syntax
 
 ```ts
 randomHex(saturation?: number, lightness?: number, alpha?: number): string | undefined
@@ -492,7 +494,7 @@ randomHex(saturation?: number, lightness?: number, alpha?: number): string | und
 - `lightness` (optional): 0–100 (default: 50)
 - `alpha` (optional): 0–100
 
-#### Example
+##### Example
 
 ```js
 import { randomHex } from '@nextcss/color-tools';
@@ -503,9 +505,9 @@ randomHex(65, 80); // with saturation + lightness
 randomHex(65, 80, 50); // with alpha (50%)
 ```
 
-### Random RGB
+#### Random RGB
 
-#### Syntax
+##### Syntax
 
 ```ts
 randomRgb(saturation?: number, lightness?: number, alpha?: number): [red, green, blue, alpha?] | undefined
@@ -517,7 +519,7 @@ randomRgb(saturation?: number, lightness?: number, alpha?: number): [red, green,
 - `lightness` (optional): 0–100 (default: 50)
 - `alpha` (optional): 0–100
 
-#### Example
+##### Example
 
 ```js
 import { randomRgb } from '@nextcss/color-tools';
@@ -528,9 +530,9 @@ randomRgb(65, 80); // with saturation + lightness
 randomRgb(65, 80, 50); // with alpha (50%)
 ```
 
-### Random HSL
+#### Random HSL
 
-#### Syntax
+##### Syntax
 
 ```ts
 randomHsl(saturation?: number, lightness?: number, alpha?: number): [hue, saturation, lightness, alpha?] | undefined
@@ -542,7 +544,7 @@ randomHsl(saturation?: number, lightness?: number, alpha?: number): [hue, satura
 - `lightness` (optional): 0–100 (default: 50)
 - `alpha` (optional): 0–100
 
-#### Example
+##### Example
 
 ```js
 import { randomHsl } from '@nextcss/color-tools';
@@ -553,9 +555,9 @@ randomHsl(65, 80); // with saturation + lightness
 randomHsl(65, 80, 50); // with alpha (50%)
 ```
 
-### Random HWB
+#### Random HWB
 
-#### Syntax
+##### Syntax
 
 ```ts
 randomHwb(saturation?: number, lightness?: number, alpha?: number): [hue, whiteness, blackness, alpha?] | undefined
@@ -567,7 +569,7 @@ randomHwb(saturation?: number, lightness?: number, alpha?: number): [hue, whiten
 - `lightness` (optional): 0–100 (default: 50)
 - `alpha` (optional): 0–100
 
-#### Example
+##### Example
 
 ```js
 import { randomHwb } from '@nextcss/color-tools';
@@ -576,9 +578,9 @@ randomHwb(); // [45, 10, 20]
 randomHwb(60, 50, 75); // with parameters
 ```
 
-### Random OKLab
+#### Random OKLab
 
-#### Syntax
+##### Syntax
 
 ```ts
 randomOklab(saturation?: number, lightness?: number, alpha?: number): [lightness, a, b, alpha?] | undefined
@@ -590,7 +592,7 @@ randomOklab(saturation?: number, lightness?: number, alpha?: number): [lightness
 - `lightness` (optional): 0–100 (default: 50)
 - `alpha` (optional): 0–100
 
-#### Example
+##### Example
 
 ```js
 import { randomOklab } from '@nextcss/color-tools';
