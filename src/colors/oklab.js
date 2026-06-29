@@ -1,9 +1,9 @@
 import { clamp } from '../tools/utils.js';
-import { rgb2hex, rgb2hsl, rgb2hwb } from './rgb.js';
+import { rgb2cmyk, rgb2hex, rgb2hsl, rgb2hwb } from './rgb.js';
 
 const INV_2_4 = 1 / 2.4;
 
-// Convert Oklab to HSL
+// Convert Oklab to RGB
 export const oklab2rgb = (oklab = []) => {
   const len = oklab.length;
   if (!Array.isArray(oklab) || (len !== 3 && len !== 4)) return;
@@ -57,4 +57,11 @@ export const oklab2hwb = (oklab = []) => {
   const len = oklab.length;
   if (!Array.isArray(oklab) || (len !== 3 && len !== 4)) return;
   return rgb2hwb(oklab2rgb(oklab));
+};
+
+// Convert Oklab to CMYK
+export const oklab2cmyk = (oklab = []) => {
+  const len = oklab.length;
+  if (!Array.isArray(oklab) || (len !== 3 && len !== 4)) return;
+  return rgb2cmyk(oklab2rgb(oklab));
 };

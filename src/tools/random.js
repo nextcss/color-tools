@@ -1,4 +1,4 @@
-import { hsl2hex, hsl2hwb, hsl2oklab, hsl2rgb } from '../colors/hsl.js';
+import { hsl2cmyk, hsl2hex, hsl2hwb, hsl2oklab, hsl2rgb } from '../colors/hsl.js';
 import { clamp, random } from './utils.js';
 
 const ds = 70;
@@ -18,3 +18,5 @@ export const randomRgb = (s, l, a) => hsl2rgb(randomHsl(s, l, a));
 export const randomHwb = (s, l, a) => hsl2hwb(randomHsl(s, l, a));
 
 export const randomOklab = (s, l, a) => hsl2oklab(randomHsl(s, l, a));
+
+export const randomCmyk = (s, l, a) => hsl2cmyk(randomHsl(s, l, a));

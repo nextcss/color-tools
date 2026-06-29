@@ -1,5 +1,5 @@
 import { clamp } from '../tools/utils.js';
-import { rgb2hex, rgb2hwb, rgb2oklab } from './rgb.js';
+import { rgb2cmyk, rgb2hex, rgb2hwb, rgb2oklab } from './rgb.js';
 
 // Convert HSL to RGB
 export const hsl2rgb = (hsl = []) => {
@@ -44,4 +44,11 @@ export const hsl2oklab = (hsl = []) => {
   const len = hsl.length;
   if (!Array.isArray(hsl) || (len !== 3 && len !== 4)) return;
   return rgb2oklab(hsl2rgb(hsl));
+};
+
+// Convert HSL to CMYK
+export const hsl2cmyk = (hsl = []) => {
+  const len = hsl.length;
+  if (!Array.isArray(hsl) || (len !== 3 && len !== 4)) return;
+  return rgb2cmyk(hsl2rgb(hsl));
 };

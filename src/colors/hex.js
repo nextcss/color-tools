@@ -1,4 +1,4 @@
-import { rgb2hsl, rgb2hwb, rgb2oklab } from './rgb.js';
+import { rgb2cmyk, rgb2hsl, rgb2hwb, rgb2oklab } from './rgb.js';
 
 const hexRegex = /^#?([0-9a-f]{3,8})$/i;
 
@@ -46,4 +46,10 @@ export const hex2hwb = (hex = '') => {
 export const hex2oklab = (hex = '') => {
   if (!hex || typeof hex !== 'string') return;
   return rgb2oklab(hex2rgb(hex));
+};
+
+// Convert HEX to CMYK
+export const hex2cmyk = (hex = '') => {
+  if (!hex || typeof hex !== 'string') return;
+  return rgb2cmyk(hex2rgb(hex));
 };

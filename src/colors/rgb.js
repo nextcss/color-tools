@@ -115,3 +115,26 @@ export const rgb2oklab = (rgb = []) => {
   const result = [Lr / POW_10_3, ar / POW_10_3, br / POW_10_3];
   return alpha !== undefined ? (result.push(alpha), result) : result;
 };
+
+// Convert RGB to CMYK
+export const rgb2cmyk = (rgb = []) => {
+  const len = rgb.length;
+  if (!Array.isArray(rgb) || (len !== 3 && len !== 4)) return;
+
+  const r = clamp(rgb[0], 0, 255) / 255;
+  const g = clamp(rgb[1], 0, 255) / 255;
+  const b = clamp(rgb[2], 0, 255) / 255;
+  const alpha = len === 4 ? clamp(rgb[3], 0, 100) : undefined;
+
+  const k = 1 - (r > g ? (r > b ? r : b) : g > b ? g : b);
+
+  if (k === 1) return alpha !== undefined ? [0, 0, 0, 100, alpha] : [0, 0, 0, 100];
+
+  const inv = 1 / (1 - k);
+  const c = ((1 - r - k) * inv * 100 + 0.5) | 0;
+  const m = ((1 - g - k) * inv * 100 + 0.5) | 0;
+  const y = ((1 - b - k) * inv * 100 + 0.5) | 0;
+  const kr = (k * 100 + 0.5) | 0;
+
+  return alpha !== undefined ? [c, m, y, kr, alpha] : [c, m, y, kr];
+};

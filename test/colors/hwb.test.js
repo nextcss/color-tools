@@ -1,4 +1,4 @@
-import { hwb2hex, hwb2hsl, hwb2oklab, hwb2rgb } from '../../src/colors/hwb.js';
+import { hwb2cmyk, hwb2hex, hwb2hsl, hwb2oklab, hwb2rgb } from '../../src/colors/hwb.js';
 
 describe('Convert HWB color', () => {
   test.concurrent('HWB white', async () => {
@@ -10,8 +10,8 @@ describe('Convert HWB color', () => {
   });
 
   test.concurrent('Sector 0 -> red', async () => {
-    expect(hwb2rgb([0, 0, 0])).toEqual([255, 0, 0]);
     expect(hwb2hex([0, 0, 0])).toEqual('#ff0000');
+    expect(hwb2rgb([0, 0, 0])).toEqual([255, 0, 0]);
     expect(hwb2hsl([0, 0, 0])).toEqual([0, 100, 50]);
   });
 
@@ -50,21 +50,24 @@ describe('Convert HWB color', () => {
   });
 
   test.concurrent('Alpha preserved and hex alpha', async () => {
-    expect(hwb2rgb([0, 0, 0, 50])).toEqual([255, 0, 0, 50]);
     expect(hwb2hex([0, 0, 0, 50])).toEqual('#ff000080');
+    expect(hwb2rgb([0, 0, 0, 50])).toEqual([255, 0, 0, 50]);
     expect(hwb2hsl([0, 0, 0, 50])).toEqual([0, 100, 50, 50]);
     expect(hwb2oklab([0, 0, 0, 50])).toEqual([0.628, 0.225, 0.126, 50]);
+    expect(hwb2cmyk([0, 0, 0, 50])).toEqual([0, 100, 100, 0, 50]);
   });
 
   test.concurrent('Exception: invalid inputs', async () => {
-    expect(hwb2rgb([0, 0])).toBeUndefined();
     expect(hwb2hex([0, 0])).toBeUndefined();
+    expect(hwb2rgb([0, 0])).toBeUndefined();
     expect(hwb2hsl([0, 0])).toBeUndefined();
     expect(hwb2oklab([0, 0])).toBeUndefined();
+    expect(hwb2cmyk([0, 0])).toBeUndefined();
 
-    expect(hwb2rgb()).toBeUndefined();
     expect(hwb2hex()).toBeUndefined();
+    expect(hwb2rgb()).toBeUndefined();
     expect(hwb2hsl()).toBeUndefined();
     expect(hwb2oklab()).toBeUndefined();
+    expect(hwb2cmyk()).toBeUndefined();
   });
 });

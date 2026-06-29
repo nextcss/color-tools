@@ -14,7 +14,7 @@ Performance optimized useful tools for working with colors. This package is a mo
 
 **Conversion Functions**
 
-[HEX Conversions](#hex-conversions) ▪ [RGB Conversions](#rgb-conversions) ▪ [HSL Conversions](#hsl-conversions) ▪ [HWB Conversions](#hwb-conversions) ▪ [OKLab Conversions](#oklab-conversions)
+[HEX](#hex-conversions) ▪ [RGB](#rgb-conversions) ▪ [HSL](#hsl-conversions) ▪ [HWB](#hwb-conversions) ▪ [OKLAB](#oklab-conversions) ▪ [CMYK](#cmyk-conversions)
 
 **Additional Functions**
 
@@ -87,13 +87,14 @@ Environment: Benchmarks were run on an Intel Core i5-12600K, Node.js v22.16.0, u
 
 ### Internal conversion throughput (ops/s)
 
-| From \\ To | HEX   | RGB   | HSL   | HWB   | OKLAB |
-| ---------- | ----- | ----- | ----- | ----- | ----- |
-| **HEX**    | —     | 17.1M | 13.4M | 13.2M | 3.8M  |
-| **RGB**    | 58.5M | —     | 56.7M | 56.2M | 5.1M  |
-| **HSL**    | 11.0M | 16.2M | —     | 13.5M | 3.9M  |
-| **HWB**    | 32.1M | 69.5M | 32.7M | —     | 4.9M  |
-| **OKLAB**  | 5.8M  | 7.7M  | 6.2M  | 6.1M  | —     |
+| From \\ To | HEX   | RGB   | HSL   | HWB   | OKLAB | CMYK |
+| ---------- | ----- | ----- | ----- | ----- | ----- | ---- |
+| **HEX**    | —     | 17.1M | 13.4M | 13.2M | 3.8M  | x    |
+| **RGB**    | 58.5M | —     | 56.7M | 56.2M | 5.1M  | x    |
+| **HSL**    | 11.0M | 16.2M | —     | 13.5M | 3.9M  | x    |
+| **HWB**    | 32.1M | 69.5M | 32.7M | —     | 4.9M  | x    |
+| **OKLAB**  | 5.8M  | 7.7M  | 6.2M  | 6.1M  | —     | x    |
+| **CMYK**   | x     | x     | x     | x     | x     | —    |
 
 > **Note:** OKLAB conversions are intentionally slower — they involve perceptually uniform color math with significantly more CPU-intensive calculations (non-linear gamma expansion, matrix transforms) compared to geometric color space conversions like HSL or HWB.
 
@@ -109,7 +110,7 @@ Environment: Benchmarks were run on an Intel Core i5-12600K, Node.js v22.16.0, u
 
 ## Conversion Functions
 
-The library provides comprehensive conversion functions between HEX, RGB, HSL, HWB, and OKLab color spaces.
+The library provides comprehensive conversion functions between HEX, RGB, HSL, HWB, OKLab, and CMYK color spaces.
 
 ### HEX Conversions
 
@@ -122,6 +123,7 @@ hex2rgb(hex: string): [red, green, blue, alpha?] | undefined
 hex2hsl(hex: string): [hue, saturation, lightness, alpha?] | undefined
 hex2hwb(hex: string): [hue, whiteness, blackness, alpha?] | undefined
 hex2oklab(hex: string): [lightness, a, b, alpha?] | undefined
+hex2cmyk(hex: string): [cyan, magenta, yellow, black, alpha?] | undefined
 ```
 
 **Return values:**
@@ -130,11 +132,12 @@ hex2oklab(hex: string): [lightness, a, b, alpha?] | undefined
 - `hex2hsl`: `[hue (0-360), saturation (0-100), lightness (0-100)]` or with `alpha (0-100)`
 - `hex2hwb`: `[hue (0-360), whiteness (0-100), blackness (0-100)]` or with `alpha (0-100)`
 - `hex2oklab`: `[lightness (0-1), a (-0.4 to 0.4), b (-0.4 to 0.4)]` or with `alpha (0-100)`
+- `hex2cmyk`: `[cyan (0-100), magenta (0-100), yellow (0-100), black (0-100)]` or with `alpha (0-100)`
 
 #### Example
 
 ```js
-import { hex2rgb, hex2hsl, hex2hwb, hex2oklab } from '@nextcss/color-tools';
+import { hex2rgb, hex2hsl, hex2hwb, hex2oklab, hex2cmyk } from '@nextcss/color-tools';
 
 hex2rgb('#eee'); // [238, 238, 238]
 hex2rgb('#2196f3bf'); // [33, 150, 243, 75]
@@ -144,6 +147,7 @@ hex2hsl('#2196f3bf'); // [207, 90, 54, 75]
 
 hex2hwb('#ff0000'); // [0, 0, 0]
 hex2oklab('#269dd9'); // [0.627, 0.224, 0.125]
+hex2cmyk('#ff0000'); // [0, 100, 100, 0]
 ```
 
 ### RGB Conversions
@@ -162,6 +166,7 @@ rgb2hex(rgb: [red, green, blue, alpha?]): string | undefined
 rgb2hsl(rgb: [red, green, blue, alpha?]): [hue, saturation, lightness, alpha?] | undefined
 rgb2hwb(rgb: [red, green, blue, alpha?]): [hue, whiteness, blackness, alpha?] | undefined
 rgb2oklab(rgb: [red, green, blue, alpha?]): [lightness, a, b, alpha?] | undefined
+rgb2cmyk(rgb: [red, green, blue, alpha?]): [cyan, magenta, yellow, black, alpha?] | undefined
 ```
 
 **Return values:**
@@ -170,11 +175,12 @@ rgb2oklab(rgb: [red, green, blue, alpha?]): [lightness, a, b, alpha?] | undefine
 - `rgb2hsl`: `[hue (0-360), saturation (0-100), lightness (0-100)]` or with `alpha (0-100)`
 - `rgb2hwb`: `[hue (0-360), whiteness (0-100), blackness (0-100)]` or with `alpha (0-100)`
 - `rgb2oklab`: `[lightness (0-1), a (-0.4 to 0.4), b (-0.4 to 0.4)]` or with `alpha (0-100)`
+- `rgb2cmyk`: `[cyan (0-100), magenta (0-100), yellow (0-100), black (0-100)]` or with `alpha (0-100)`
 
 #### Example
 
 ```js
-import { rgb2hex, rgb2hsl, rgb2hwb, rgb2oklab } from '@nextcss/color-tools';
+import { rgb2hex, rgb2hsl, rgb2hwb, rgb2oklab, rgb2cmyk } from '@nextcss/color-tools';
 
 rgb2hex([238, 238, 238]); // '#eeeeee'
 rgb2hex([33, 150, 243, 75]); // '#2196f3bf'
@@ -184,6 +190,7 @@ rgb2hsl([255, 0, 0, 50]); // [0, 100, 50, 50]
 
 rgb2hwb([255, 0, 0]); // [0, 0, 0]
 rgb2oklab([255, 0, 0]); // [0.627, 0.224, 0.125]
+rgb2cmyk([255, 0, 0]); // [0, 100, 100, 0]
 ```
 
 ### HSL Conversions
@@ -204,6 +211,7 @@ hsl2hex(hsl: [hue, saturation, lightness, alpha?]): string | undefined
 hsl2rgb(hsl: [hue, saturation, lightness, alpha?]): [red, green, blue, alpha?] | undefined
 hsl2hwb(hsl: [hue, saturation, lightness, alpha?]): [hue, whiteness, blackness, alpha?] | undefined
 hsl2oklab(hsl: [hue, saturation, lightness, alpha?]): [lightness, a, b, alpha?] | undefined
+hsl2cmyk(hsl: [hue, saturation, lightness, alpha?]): [cyan, magenta, yellow, black, alpha?] | undefined
 ```
 
 **Return values:**
@@ -212,11 +220,12 @@ hsl2oklab(hsl: [hue, saturation, lightness, alpha?]): [lightness, a, b, alpha?] 
 - `hsl2rgb`: `[red (0-255), green (0-255), blue (0-255)]` or with `alpha (0-100)`
 - `hsl2hwb`: `[hue (0-360), whiteness (0-100), blackness (0-100)]` or with `alpha (0-100)`
 - `hsl2oklab`: `[lightness (0-1), a (-0.4 to 0.4), b (-0.4 to 0.4)]` or with `alpha (0-100)`
+- `hsl2cmyk`: `[cyan (0-100), magenta (0-100), yellow (0-100), black (0-100)]` or with `alpha (0-100)`
 
 #### Example
 
 ```js
-import { hsl2hex, hsl2rgb, hsl2hwb, hsl2oklab } from '@nextcss/color-tools';
+import { hsl2hex, hsl2rgb, hsl2hwb, hsl2oklab, hsl2cmyk } from '@nextcss/color-tools';
 
 hsl2hex([0, 100, 50]); // '#ff0000'
 hsl2hex([200, 70, 50]); // '#269dd9'
@@ -226,6 +235,7 @@ hsl2rgb([0, 100, 50, 50]); // [255, 0, 0, 50]
 
 hsl2hwb([0, 100, 50]); // [0, 0, 0]
 hsl2oklab([0, 100, 50]); // [0.627, 0.224, 0.125]
+hsl2cmyk([0, 100, 50]); // [0, 100, 100, 0]
 ```
 
 ### HWB Conversions
@@ -246,6 +256,7 @@ hwb2hex(hwb: [hue, whiteness, blackness, alpha?]): string | undefined
 hwb2rgb(hwb: [hue, whiteness, blackness, alpha?]): [red, green, blue, alpha?] | undefined
 hwb2hsl(hwb: [hue, whiteness, blackness, alpha?]): [hue, saturation, lightness, alpha?] | undefined
 hwb2oklab(hwb: [hue, whiteness, blackness, alpha?]): [lightness, a, b, alpha?] | undefined
+hwb2cmyk(hwb: [hue, whiteness, blackness, alpha?]): [cyan, magenta, yellow, black, alpha?] | undefined
 ```
 
 **Return values:**
@@ -254,16 +265,18 @@ hwb2oklab(hwb: [hue, whiteness, blackness, alpha?]): [lightness, a, b, alpha?] |
 - `hwb2rgb`: `[red (0-255), green (0-255), blue (0-255)]` or with `alpha (0-100)`
 - `hwb2hsl`: `[hue (0-360), saturation (0-100), lightness (0-100)]` or with `alpha (0-100)`
 - `hwb2oklab`: `[lightness (0-1), a (-0.4 to 0.4), b (-0.4 to 0.4)]` or with `alpha (0-100)`
+- `hwb2cmyk`: `[cyan (0-100), magenta (0-100), yellow (0-100), black (0-100)]` or with `alpha (0-100)`
 
 #### Example
 
 ```js
-import { hwb2hex, hwb2rgb, hwb2hsl, hwb2oklab } from '@nextcss/color-tools';
+import { hwb2hex, hwb2rgb, hwb2hsl, hwb2oklab, hwb2cmyk } from '@nextcss/color-tools';
 
 hwb2hex([0, 0, 0]); // '#ff0000'
 hwb2rgb([0, 0, 0]); // [255, 0, 0]
 hwb2hsl([0, 0, 0]); // [0, 100, 50]
 hwb2oklab([0, 0, 0]); // [0.627, 0.224, 0.125]
+hwb2cmyk([0, 0, 0]); // [0, 100, 100, 0]
 ```
 
 ### OKLab Conversions
@@ -284,6 +297,7 @@ oklab2hex(oklab: [lightness, a, b, alpha?]): string | undefined
 oklab2rgb(oklab: [lightness, a, b, alpha?]): [red, green, blue, alpha?] | undefined
 oklab2hsl(oklab: [lightness, a, b, alpha?]): [hue, saturation, lightness, alpha?] | undefined
 oklab2hwb(oklab: [lightness, a, b, alpha?]): [hue, whiteness, blackness, alpha?] | undefined
+oklab2cmyk(oklab: [lightness, a, b, alpha?]): [cyan, magenta, yellow, black, alpha?] | undefined
 ```
 
 **Return values:**
@@ -292,16 +306,60 @@ oklab2hwb(oklab: [lightness, a, b, alpha?]): [hue, whiteness, blackness, alpha?]
 - `oklab2rgb`: `[red (0-255), green (0-255), blue (0-255)]` or with `alpha (0-100)`
 - `oklab2hsl`: `[hue (0-360), saturation (0-100), lightness (0-100)]` or with `alpha (0-100)`
 - `oklab2hwb`: `[hue (0-360), whiteness (0-100), blackness (0-100)]` or with `alpha (0-100)`
+- `oklab2cmyk`: `[cyan (0-100), magenta (0-100), yellow (0-100), black (0-100)]` or with `alpha (0-100)`
 
 #### Example
 
 ```js
-import { oklab2hex, oklab2rgb, oklab2hsl, oklab2hwb } from '@nextcss/color-tools';
+import { oklab2hex, oklab2rgb, oklab2hsl, oklab2hwb, oklab2cmyk } from '@nextcss/color-tools';
 
 oklab2hex([0.627, 0.224, 0.125]); // '#ff0000'
 oklab2rgb([0.627, 0.224, 0.125]); // [255, 0, 0]
 oklab2hsl([0.627, 0.224, 0.125]); // [0, 100, 50]
 oklab2hwb([0.627, 0.224, 0.125]); // [0, 0, 0]
+oklab2cmyk([0.627, 0.224, 0.125]); // [0, 100, 100, 0]
+```
+
+### CMYK Conversions
+
+Convert from CMYK (cyan, magenta, yellow, black) array.
+
+**Array format:** `[cyan, magenta, yellow, black, alpha?]`
+
+- `cyan`: 0–100
+- `magenta`: 0–100
+- `yellow`: 0–100
+- `black`: 0–100
+- `alpha` (optional): 0–100
+
+#### Syntax
+
+```ts
+cmyk2hex(cmyk: [cyan, magenta, yellow, black, alpha?]): string | undefined
+cmyk2rgb(cmyk: [cyan, magenta, yellow, black, alpha?]): [red, green, blue, alpha?] | undefined
+cmyk2hsl(cmyk: [cyan, magenta, yellow, black, alpha?]): [hue, saturation, lightness, alpha?] | undefined
+cmyk2hwb(cmyk: [cyan, magenta, yellow, black, alpha?]): [hue, whiteness, blackness, alpha?] | undefined
+cmyk2oklab(cmyk: [cyan, magenta, yellow, black, alpha?]): [lightness, a, b, alpha?] | undefined
+```
+
+**Return values:**
+
+- `cmyk2hex`: HEX color string (e.g. `'#ff0000'`)
+- `cmyk2rgb`: `[red (0-255), green (0-255), blue (0-255)]` or with `alpha (0-100)`
+- `cmyk2hsl`: `[hue (0-360), saturation (0-100), lightness (0-100)]` or with `alpha (0-100)`
+- `cmyk2hwb`: `[hue (0-360), whiteness (0-100), blackness (0-100)]` or with `alpha (0-100)`
+- `cmyk2oklab`: `[lightness (0-1), a (-0.4 to 0.4), b (-0.4 to 0.4)]` or with `alpha (0-100)`
+
+#### Example
+
+```js
+import { cmyk2hex, cmyk2rgb, cmyk2hsl, cmyk2hwb, cmyk2oklab } from '@nextcss/color-tools';
+
+cmyk2hex([0, 100, 100, 0]); // '#ff0000'
+cmyk2rgb([0, 100, 100, 0]); // [255, 0, 0]
+cmyk2hsl([0, 100, 100, 0]); // [0, 100, 50]
+cmyk2hwb([0, 100, 100, 0]); // [0, 0, 0]
+cmyk2oklab([0, 100, 100, 0]); // [0.627, 0.224, 0.125]
 ```
 
 ## Additional Functions
@@ -669,6 +727,29 @@ import { randomOklab } from '@nextcss/color-tools';
 
 randomOklab(); // [0.627, 0.224, 0.125]
 randomOklab(70, 50, 90); // with parameters
+```
+
+#### Random CMYK
+
+##### Syntax
+
+```ts
+randomCmyk(saturation?: number, lightness?: number, alpha?: number): [cyan, magenta, yellow, black, alpha?] | undefined
+```
+
+**Parameters:**
+
+- `saturation` (optional): 0–100 (default: 70)
+- `lightness` (optional): 0–100 (default: 50)
+- `alpha` (optional): 0–100
+
+##### Example
+
+```js
+import { randomCmyk } from '@nextcss/color-tools';
+
+randomCmyk(); // [0, 100, 100, 0]
+randomCmyk(70, 50, 90); // with parameters
 ```
 
 ## Guidelines
