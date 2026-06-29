@@ -60,7 +60,6 @@
   "devDependencies": {
     "@types/jest": "^30.0.0",
     "benny": "^3.7.1",
-    "colord": "^2.9.3",
     "esbuild": "^0.28.1",
     "jest": "^30.4.2",
     "jest-esbuild": "^0.4.0"

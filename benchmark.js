@@ -1,5 +1,5 @@
 import b from 'benny';
-import { colord } from 'colord';
+// import { colord } from 'colord';
 import {
   cmyk2hex,
   cmyk2hsl,
@@ -52,65 +52,73 @@ const hwb = [0, 50, 50, 75];
 const lab = [0.5, 0, 0, 75];
 const cmyk = [0, 0, 0, 50, 75];
 
-b.suite(
-  'Parse HEX and convert to RGB object/array',
+/**
+ * Important Note:
+ * colord package removed from packages.json
+ * if you want to run the benchmark, install colord package first
+ * then uncomment the colord import and the colord benchmark tests
+ * yarn add -D colord
+ */
 
-  b.add('colord', () => {
-    colord(hex).toRgb();
-  }),
+// b.suite(
+//   'Parse HEX and convert to RGB object/array',
 
-  b.add('nextcss', () => {
-    hex2rgb(hex);
-  }),
+//   b.add('colord', () => {
+//     colord(hex).toRgb();
+//   }),
 
-  b.cycle(),
-  b.complete(),
-);
+//   b.add('nextcss', () => {
+//     hex2rgb(hex);
+//   }),
 
-b.suite(
-  'Parse HEX and convert to HSL object/array',
+//   b.cycle(),
+//   b.complete(),
+// );
 
-  b.add('colord', () => {
-    colord(hex).toHsl();
-  }),
+// b.suite(
+//   'Parse HEX and convert to HSL object/array',
 
-  b.add('nextcss', () => {
-    hex2hsl(hex);
-  }),
+//   b.add('colord', () => {
+//     colord(hex).toHsl();
+//   }),
 
-  b.cycle(),
-  b.complete(),
-);
+//   b.add('nextcss', () => {
+//     hex2hsl(hex);
+//   }),
 
-b.suite(
-  'Parse RGB and convert to HEX string',
+//   b.cycle(),
+//   b.complete(),
+// );
 
-  b.add('colord', () => {
-    colord(rgbString).toHex();
-  }),
+// b.suite(
+//   'Parse RGB and convert to HEX string',
 
-  b.add('nextcss', () => {
-    rgb2hex(rgb);
-  }),
+//   b.add('colord', () => {
+//     colord(rgbString).toHex();
+//   }),
 
-  b.cycle(),
-  b.complete(),
-);
+//   b.add('nextcss', () => {
+//     rgb2hex(rgb);
+//   }),
 
-b.suite(
-  'Parse RGB and convert to HSL array',
+//   b.cycle(),
+//   b.complete(),
+// );
 
-  b.add('colord', () => {
-    colord(rgbString).toHsl();
-  }),
+// b.suite(
+//   'Parse RGB and convert to HSL array',
 
-  b.add('nextcss', () => {
-    rgb2hsl(rgb);
-  }),
+//   b.add('colord', () => {
+//     colord(rgbString).toHsl();
+//   }),
 
-  b.cycle(),
-  b.complete(),
-);
+//   b.add('nextcss', () => {
+//     rgb2hsl(rgb);
+//   }),
+
+//   b.cycle(),
+//   b.complete(),
+// );
 
 b.suite(
   'Benchmark HEX converts',
