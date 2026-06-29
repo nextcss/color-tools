@@ -32,19 +32,20 @@ describe('Tones', () => {
   });
 
   test.concurrent('6 digits with hash', async () => {
-    expect(toneMap('#eeeeee', 10)).toEqual(testResult);
+    expect(toneMap('#eeeeee')).toEqual(testResult);
   });
 
   test.concurrent('6 digits without hash', async () => {
-    expect(toneMap('eeeeee', 10)).toEqual(testResult);
+    expect(toneMap('eeeeee')).toEqual(testResult);
   });
 
   test.concurrent('4 digits with hash', async () => {
     const testResultsWithAlpha = {};
     for (const prop in testResult) {
+      // @ts-ignore
       testResultsWithAlpha[prop] = testResult[prop] + 'ed';
     }
-    expect(toneMap('#eeee', 10)).toEqual(testResultsWithAlpha);
+    expect(toneMap('#eeee')).toEqual(testResultsWithAlpha);
   });
 
   test.concurrent('Exception: 5 digits', async () => {
@@ -61,6 +62,10 @@ describe('Tones', () => {
 
   test.concurrent('Exception: empty input', async () => {
     expect(toneMap()).toEqual({});
+  });
+
+  test.concurrent('Exception: non-existing mode', async () => {
+    expect(toneMap('#eeeeee', 'invalid')).toEqual(testResult);
   });
 
   test.concurrent('Custom tones', async () => {

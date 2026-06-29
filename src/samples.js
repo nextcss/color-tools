@@ -60,19 +60,19 @@ const customTones = {
 console.log('toneMapCustom', [
   {
     name: 'RGB Palette',
-    tones: Object.values(toneMap(customTonesColor, 'rgb', customTones)),
+    tones: Object.values(toneMap(customTonesColor, 'rgb', customTones) ?? {}),
   },
   {
     name: 'HSL Palette',
-    tones: Object.values(toneMap(customTonesColor, 'hsl', customTones)),
+    tones: Object.values(toneMap(customTonesColor, 'hsl', customTones) ?? {}),
   },
   {
     name: 'HWB Palette',
-    tones: Object.values(toneMap(customTonesColor, 'hwb', customTones)),
+    tones: Object.values(toneMap(customTonesColor, 'hwb', customTones) ?? {}),
   },
   {
     name: 'Oklab Palette',
-    tones: Object.values(toneMap(customTonesColor, 'oklab', customTones)),
+    tones: Object.values(toneMap(customTonesColor, 'oklab', customTones) ?? {}),
   },
 ]);
 

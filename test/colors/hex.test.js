@@ -99,9 +99,9 @@ describe('Convert HEX color', () => {
 
   test.concurrent('h with (g < b) condition', async () => {
     const result = hex2hsl('#c2192f');
-    expect(result[0]).toBeCloseTo(352, 0);
-    expect(result[1]).toBeCloseTo(77, 0);
-    expect(result[2]).toBeCloseTo(43, 0);
+    expect(result?.[0]).toBeCloseTo(352, 0);
+    expect(result?.[1]).toBeCloseTo(77, 0);
+    expect(result?.[2]).toBeCloseTo(43, 0);
   });
 
   test.concurrent('max === g (green dominant)', async () => {

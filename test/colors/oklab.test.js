@@ -44,6 +44,6 @@ describe('Convert Oklab color', () => {
     const light = oklab2rgb([0.2, 0, 0]);
     expect(dark).toBeDefined();
     expect(light).toBeDefined();
-    expect(dark[0]).toBeLessThan(light[0]);
+    expect(dark?.[0]).toBeLessThan(light?.[0] || 0);
   });
 });

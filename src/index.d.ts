@@ -16,6 +16,31 @@ export type HwbValue = ColorArray;
 /** An OKLab or OKLaba color value, which can be an array of three or four numbers. */
 export type OklabValue = ColorArray;
 
+/** A map of tone steps (50–950) to HEX color strings. */
+export type ToneMap = Record<ToneStep, string> & { [key: string]: string };
+
+/** A tone step value from 50 to 950 in increments of 50. */
+export type ToneStep =
+  | 50
+  | 100
+  | 150
+  | 200
+  | 250
+  | 300
+  | 350
+  | 400
+  | 450
+  | 500
+  | 550
+  | 600
+  | 650
+  | 700
+  | 750
+  | 800
+  | 850
+  | 900
+  | 950;
+
 /**
  * Convert a HEX color string to an RGB array.
  * @param hex The HEX color string.
@@ -341,26 +366,39 @@ export function oklabColorShift(hex: string, percentage: number): HexValue | und
 
 /**
  * Generate a tone map for a given HEX color string.
- * @param hex The HEX color string.
- * @param mode The color space used for lightness shifting:
- *   - `'rgb'` — (default) fastest, slight hue drift on chromatic colors
- *   - `'hsl'` — hue-preserving, natural for UI palettes
+ *
+ * @param hex - The HEX color string (e.g. `'#f0b100'`).
+ * @param mode - The color space used for lightness shifting:
+ *   - `'rgb'` — (default) fastest, slight hue drift on saturated colors
+ *   - `'hsl'` — hue-preserving, can over-saturate at mid-tones
  *   - `'hwb'` — gentler shifts, paint-mixing model
- *   - `'oklab'` — perceptually uniform, most accurate but slowest
- * @returns An object with tone keys (50–950) mapped to HEX color strings,
- *   or undefined if the input is invalid.
+ *   - `'oklab'` — perceptually uniform, most accurate for mixed hues
+ * @param customTones - Optional overrides for individual tone steps.
+ *   Keys are tone values (`50`–`950`), values are lightness offsets
+ *   relative to the base color (`0` = no change, positive = lighter,
+ *   negative = darker). Unspecified steps use the default linear scale.
+ * @returns An object with tone keys (`50`–`950`) mapped to HEX strings,
+ *   or `undefined` if the input hex is invalid.
+ *
  * @example
- * const tones = toneMap('#aabbcc', 'hsl');
- * console.log(tones[100]); // '#ddeeff'
- * console.log(tones[900]); // '#112233'
+ * // Default linear scale
+ * const tones = toneMap('#f0b100');
+ * tones[500]; // '#f0b100' — base color
+ * tones[100]; // lighter variant
+ * tones[900]; // darker variant
+ *
+ * @example
+ * // Custom non-linear scale (denser dark end, like Tailwind)
+ * const tones = toneMap('#f0b100', 'rgb', {
+ *   300: 40,
+ *   500: 0,
+ *   700: -38,  // smaller step than default -40
+ *   800: -55,  // compressed dark range
+ *   900: -68,
+ * });
  */
 export function toneMap(
   hex: string,
   mode?: 'rgb' | 'hsl' | 'hwb' | 'oklab',
-  customTones?: Record<string, number>,
-):
-  | Record<
-      50 | 100 | 150 | 200 | 250 | 300 | 350 | 400 | 450 | 500 | 550 | 600 | 650 | 700 | 750 | 800 | 850 | 900 | 950,
-      string
-    >
-  | undefined;
+  customTones?: Partial<Record<ToneStep, number>>,
+): ToneMap | undefined;

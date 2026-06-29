@@ -55,9 +55,9 @@ describe('Convert RGB color', () => {
   test.concurrent('toLinear branch for low channel values', async () => {
     const out = rgb2oklab([10, 10, 10]);
     expect(out).toHaveLength(3);
-    expect(typeof out[0]).toBe('number');
-    expect(typeof out[1]).toBe('number');
-    expect(typeof out[2]).toBe('number');
+    expect(typeof out?.[0]).toBe('number');
+    expect(typeof out?.[1]).toBe('number');
+    expect(typeof out?.[2]).toBe('number');
   });
 
   test.concurrent('r-max with g < b branch (g < b ? 6 : 0)', async () => {
