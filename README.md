@@ -2,12 +2,13 @@
 
 # Color Tools
 
-Useful tools when working with colors. This package is a module of [the nextcss project](https://github.com/nextcss). It provides a comprehensive set of color conversion and manipulation utilities for both browser and Node.js environments with full TypeScript support.
+Brutally performance optimized useful tools for working with colors. This package is a module of [the nextcss project](https://github.com/nextcss). It provides a comprehensive set of color conversion and manipulation utilities for both browser and Node.js environments with full TypeScript support.
 
 ## Table of Contents
 
 - [Installation](#installation)
 - [Compatibility](#compatibility)
+- [Benchmarks](#benchmarks)
 - [Conversion Functions](#conversion-functions)
   - [HEX Conversions](#hex-conversions)
   - [RGB Conversions](#rgb-conversions)
@@ -36,6 +37,41 @@ npm i -D @nextcss/color-tools
 ## Compatibility
 
 This package works in both **browser** and **Node.js** environments. It includes ESM and CommonJS builds, so both `import` and `require` statements work everywhere. Full TypeScript support is included.
+
+## Benchmarks
+
+### Baseline: nextcss vs. colord (parse + convert)
+
+| Operation | colord    | nextcss    | Δ          |
+| --------- | --------- | ---------- | ---------- |
+| HEX → RGB | 5,407,248 | 15,582,292 | **+188%**  |
+| HEX → HSL | 5,777,497 | 13,150,504 | **+127%**  |
+| RGB → HEX | 2,795,332 | 58,153,587 | **+1980%** |
+| RGB → HSL | 3,294,292 | 54,329,375 | **+1549%** |
+
+> **Note:** Performance measured in operations per second (ops/s). **colord** is used as a baseline reference only — it uses a chainable wrapper architecture with additional overhead, so numbers are not a direct apples-to-apples comparison, but give a familiar point of reference.
+
+### Internal conversion throughput
+
+| From \ To | HEX   | RGB   | HSL   | HWB   | OKLAB |
+| --------- | ----- | ----- | ----- | ----- | ----- |
+| **HEX**   | —     | 15.9M | 12.7M | 13.0M | 3.8M  |
+| **RGB**   | 58.0M | —     | 55.1M | 53.9M | 5.1M  |
+| **HSL**   | 11,0M | 16.3M | —     | 13.4M | 3.9M  |
+| **HWB**   | 31,5M | 67.0M | 33.2M | —     | 4.8M  |
+| **OKLAB** | 5,6M  | 7.6M  | 6.1M  | 5.9M  | —     |
+
+> **Note:** OKLAB conversions are intentionally slower — they involve perceptually uniform color math with significantly more CPU-intensive calculations (non-linear gamma expansion, matrix transforms) compared to geometric color space conversions like HSL or HWB.
+
+### Other operations
+
+| Operation               | Fastest | ops/s      |
+| ----------------------- | ------- | ---------- |
+| Random color generation | HSL     | 99,853,145 |
+| Color shifting          | RGB     | 9,389,797  |
+| Tone mapping            | RGB     | 189,401    |
+
+> **Note:** Tone mapping operates on a fundamentally different scale — it internally uses color shifting, adding cumulative overhead per step — sub-200K ops/s reflects this layered computation rather than a single conversion.
 
 ## Conversion Functions
 
