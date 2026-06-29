@@ -7,6 +7,7 @@ Brutally performance optimized useful tools for working with colors. This packag
 ## Table of Contents
 
 - [Installation](#installation)
+- [Quick Start](#quick-start)
 - [Compatibility](#compatibility)
 - [Benchmarks](#benchmarks)
 - [Conversion Functions](#conversion-functions)
@@ -34,13 +35,33 @@ yarn add -D @nextcss/color-tools
 npm i -D @nextcss/color-tools
 ```
 
+## Quick Start
+
+```js
+import { hsl2hex, hslColorShift, toneMap, brightness } from '@nextcss/color-tools';
+
+// Convert HSL to HEX
+const hex = hsl2hex([207, 90, 54]);
+
+// Lighten a color by 20%
+const lightened = hslColorShift(hex, 20);
+
+// Generate a full tone scale from the lightened color
+const scale = toneMap(lightened);
+
+// Check perceived brightness for contrast decisions
+const brightnessValue = brightness(lightened);
+```
+
 ## Compatibility
 
 This package works in both **browser** and **Node.js** environments. It includes ESM and CommonJS builds, so both `import` and `require` statements work everywhere. Full TypeScript support is included.
 
 ## Benchmarks
 
-### Baseline: nextcss vs. colord (parse + convert)
+Environment: Benchmarks were run on an Intel Core i5-12600K, Node.js v22.16.0, using Benny in a single-threaded environment. Results are measured in operations per second (ops/s) - higher is better.
+
+### Baseline: nextcss vs. colord (ops/s)
 
 | Operation     | colord    | nextcss    | Δ      |
 | ------------- | --------- | ---------- | ------ |
@@ -49,9 +70,9 @@ This package works in both **browser** and **Node.js** environments. It includes
 | **RGB → HEX** | 2,938,363 | 62,153,898 | +2016% |
 | **RGB → HSL** | 3,489,380 | 57,524,837 | +1549% |
 
-> **Note:** Performance measured in operations per second (ops/s). **colord** is used as a baseline reference only — it uses a chainable wrapper architecture with additional overhead, so numbers are not a direct apples-to-apples comparison, but give a familiar point of reference.
+> **Note:** colord is used as a baseline reference only — it uses a chainable wrapper architecture with additional overhead, so numbers are not a direct apples-to-apples comparison, but give a familiar point of reference.
 
-### Internal conversion throughput
+### Internal conversion throughput (ops/s)
 
 | From \\ To | HEX   | RGB   | HSL   | HWB   | OKLAB |
 | ---------- | ----- | ----- | ----- | ----- | ----- |
