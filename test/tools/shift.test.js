@@ -61,4 +61,13 @@ describe('Color Shift', () => {
   test.concurrent('Exception: empty input', async () => {
     expect(rgbColorShift()).toBeUndefined();
   });
+
+  test.concurrent('Exception: shift out of range', async () => {
+    const hex = '#eee';
+    const shift = 101;
+    expect(rgbColorShift(hex, shift)).toBe('#ffffff');
+    expect(hslColorShift(hex, shift)).toBe('#ffffff');
+    expect(hwbColorShift(hex, shift)).toBe('#eeeeee');
+    expect(oklabColorShift(hex, shift)).toBe('#ffffff');
+  });
 });

@@ -71,4 +71,12 @@ describe('Convert RGB color', () => {
   test('rgb2hwb max = b when b > r > g', () => {
     expect(rgb2hwb([150, 50, 200])).toBeDefined(); // b(200) > r(150) > g(50)
   });
+
+  test('rgb2hsl min = r when r < g < b', () => {
+    expect(rgb2hsl([50, 100, 150])).toBeDefined(); // r(50) < g(100) < b(150)
+  });
+
+  test('rgb2hwb min = r when r < g < b', () => {
+    expect(rgb2hwb([50, 100, 150])).toBeDefined(); // r(50) < g(100) < b(150)
+  });
 });
