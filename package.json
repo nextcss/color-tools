@@ -1,6 +1,6 @@
 {
   "name": "@nextcss/color-tools",
-  "version": "1.0.11",
+  "version": "2.0.0",
   "description": "Performance optimized useful tools for working with colors.",
   "keywords": [
     "color",
@@ -10,6 +10,10 @@
     "color-palette-generator",
     "hex",
     "rgb",
+    "hsl",
+    "hwb",
+    "oklab",
+    "cmyk",
     "tool",
     "tools",
     "convert",
@@ -20,6 +24,7 @@
   "license": "MIT",
   "type": "module",
   "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
@@ -38,7 +43,7 @@
   "author": {
     "name": "Zsolt Tovis",
     "email": "tovis.zsolt@gmail.com",
-    "url": "https://toviszsolt.github.io/"
+    "url": "https://toviszsolt.stacklegend.com/"
   },
   "funding": "https://github.com/sponsors/toviszsolt",
   "repository": {
