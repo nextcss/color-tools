@@ -68,5 +68,13 @@
     "esbuild": "^0.28.1",
     "jest": "^30.4.2",
     "jest-esbuild": "^0.4.0"
+  },
+  "overrides": {
+    "picomatch": "^4.0.4",
+    "minimatch": "^10.2.5"
+  },
+  "resolutions": {
+    "picomatch": "^4.0.4",
+    "minimatch": "^10.2.5"
   }
 }
