@@ -13,13 +13,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
-          node-version: "24.x"
-          cache: "yarn"
+          node-version: '24.x'
+          cache: 'yarn'
 
       - name: Install dependencies
         run: yarn install --ignore-engines
@@ -39,7 +39,7 @@ jobs:
           cd ..
 
       - name: Upload dist to release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v3
         with:
           files: Release.zip
         env:
